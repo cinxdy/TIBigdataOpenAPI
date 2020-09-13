@@ -22,7 +22,7 @@ print(serverUrl)
 es = Elasticsearch(hosts=serverUrl, port=9200)
 print(es)
 print (es.cat.indices())
-index_name='nkdb200912'
+index_name='nkdb200913'
 
 word = '통일'
 res = es.search(index=index_name, body={"query": {"match":{"post_body":word}}})
