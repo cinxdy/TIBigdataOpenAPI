@@ -28,7 +28,7 @@ def addApiUser(id):
             'month': int(now.strftime('%m')),
             'date': int(now.strftime('%d'))
             },
-        "expration_date" : {
+        "expiration_date" : {
             'year': int(now.strftime('%y'))+1,
             'month': int(now.strftime('%m')),
             'date': int(now.strftime('%d'))
