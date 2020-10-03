@@ -1,0 +1,196 @@
+{
+        "_id" : ObjectId("5f2b9f1b47b7220d3db83422"),
+        "history" : [
+                {
+                        "keyword" : "백두사",
+                        "year" : 2020,
+                        "month" : 7,
+                        "date" : 7,
+                        "hour" : 2,
+                        "min" : 29,
+                        "time" : ISODate("2020-08-07T02:29:27.758Z")
+                },
+                {
+                        "keyword" : "백두산",
+                        "year" : 2020,
+                        "month" : 7,
+                        "date" : 7,
+                        "hour" : 2,
+                        "min" : 29,
+                        "time" : ISODate("2020-08-07T02:29:32.575Z")
+                },
+                {
+                        "keyword" : "백두산",
+                        "year" : 2020,
+                        "month" : 7,
+                        "date" : 7,
+                        "hour" : 2,
+                        "min" : 29,
+                        "time" : ISODate("2020-08-07T02:29:32.586Z")
+                },
+                {
+                        "keyword" : "백두산",
+                        "year" : 2020,
+                        "month" : 7,
+                        "date" : 7,
+                        "hour" : 2,
+                        "min" : 29,
+                        "time" : ISODate("2020-08-07T02:29:54.509Z")
+                },
+                {
+                        "keyword" : "백두산",
+                        "year" : 2020,
+                        "month" : 7,
+                        "date" : 7,
+                        "hour" : 5,
+                        "min" : 1,
+                        "time" : ISODate("2020-08-07T05:01:37.661Z")
+                },
+                {
+                        "keyword" : "백두산",
+                        "year" : 2020,
+                        "month" : 7,
+                        "date" : 8,
+                        "hour" : 2,
+                        "min" : 56,
+                        "time" : ISODate("2020-08-08T02:56:49.680Z")
+                },
+                {
+                        "keyword" : "백두산",
+                        "year" : 2020,
+                        "month" : 7,
+                        "date" : 22,
+                        "hour" : 5,
+                        "min" : 25,
+                        "time" : ISODate("2020-08-22T05:25:59.409Z")
+                },
+                {
+                        "keyword" : "백두산",
+                        "year" : 2020,
+                        "month" : 7,
+                        "date" : 22,
+                        "hour" : 6,
+                        "min" : 51,
+                        "time" : ISODate("2020-08-22T06:51:22.820Z")
+                },
+                {
+                        "keyword" : "문재인",
+                        "year" : 2020,
+                        "month" : 8,
+                        "date" : 4,
+                        "hour" : 10,
+                        "min" : 52,
+                        "time" : ISODate("2020-09-04T10:52:32.040Z")
+                }
+        ],
+        "myDoc" : [
+                "5de113ffb53863d63aa5536f",
+                "5de113c7b53863d63aa5534f"
+        ],
+        "nickname" : "백",
+        "name" : "백재형",
+        "inst" : "한동대학교",
+        "email" : "21500850@handong.edu",
+        "password" : "$2b$10$POs2MYzQ1R861vi7q1D5UeLhhhB545Sn6KqXch7tYb6/NXqONrSFC",
+        "auth" : "email",
+        "__v" : 0
+},
+{
+        "_id" : ObjectId("5f2bcb7d47b7220d3db83487"),
+        "history" : [
+                {
+                        "keyword" : "백두산",
+                        "year" : 2020,
+                        "month" : 7,
+                        "date" : 22,
+                        "hour" : 5,
+                        "min" : 1,
+                        "time" : ISODate("2020-08-22T05:01:14.768Z")
+                },
+                {
+                        "keyword" : "백두산",
+                        "year" : 2020,
+                        "month" : 7,
+                        "date" : 22,
+                        "hour" : 11,
+                        "min" : 55,
+                        "time" : ISODate("2020-08-22T11:55:13.085Z")
+                }
+        ],
+        "myDoc" : [ ],
+        "auth" : "email",
+        "__v" : 0
+},
+{
+        "_id" : ObjectId("5f2bedd347b7220d3db83488"),
+        "history" : [ ],
+        "myDoc" : [
+                "5de112fcb53863d63aa552da",
+                "5de11308b53863d63aa552e1",
+                "5de11397b53863d63aa55332",
+                "5de11361b53863d63aa55316"
+        ],
+        "nickname" : "d",
+        "name" : "d",
+        "inst" : "d",
+        "email" : "sooyun721@naver.com",
+        "password" : "$2b$10$yvEb3eR092AFoy6uruIDDusxF6SzDTJqNDaFeOw7ZhK2ANVP6rpiK",
+        "auth" : "email",
+        "__v" : 0
+},
+{
+        "_id" : ObjectId("5f36627147b7220d3db83490"),
+        "history" : [
+                {
+                        "keyword" : "한반도",
+                        "year" : 2020,
+                        "month" : 7,
+                        "date" : 14,
+                        "hour" : 10,
+                        "min" : 9,
+                        "time" : ISODate("2020-08-14T10:09:06.737Z")
+                },
+                {
+                        "keyword" : "한반도",
+                        "year" : 2020,
+                        "month" : 7,
+                        "date" : 14,
+                        "hour" : 10,
+                        "min" : 9,
+                        "time" : ISODate("2020-08-14T10:09:24.514Z")
+                },
+                {
+                        "keyword" : "한반도",
+                        "year" : 2020,
+                        "month" : 7,
+                        "date" : 14,
+                        "hour" : 10,
+                        "min" : 11,
+                        "time" : ISODate("2020-08-14T10:11:19.776Z")
+                }
+        ],
+        "myDoc" : [
+                "5de11192b53863d63aa5521b",
+                "5de113bbb53863d63aa55348",
+                "5de112f4b53863d63aa552d5"
+        ],
+        "nickname" : "박지현",
+        "name" : "박지현",
+        "inst" : "한동대학교",
+        "email" : "jhpark@handong.edu",
+        "password" : "$2b$10$oRb0sQzQndycpUZje1bGOuEH/dcSeM9kri.e5mwrEf3kwTsO4Ur.2",
+        "auth" : "email",
+        "__v" : 0
+},
+{
+        "_id" : ObjectId("5f705270a9dcb178e4f60305"),
+        "history" : [ ],
+        "myDoc" : [ ],
+        "name" : "2",
+        "nickname" : "2",
+        "inst" : "2",
+        "email" : "2",
+        "password" : "$2b$10$/M2C.2qY/W/XyElOLoRMue8uuN5RtrVjNI0Gs/Wu22l.dOf3PpvgK",
+        "auth" : "email",
+        "__v" : 0
+}
