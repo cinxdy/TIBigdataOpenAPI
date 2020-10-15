@@ -14,15 +14,14 @@ def makeCode():
     hashKey = pbkdf2_sha512.hash(key)
     return hashKey
 
-def addApiUser(id):
+def addApiUser(email):
     now = datetime.datetime.now().date()
 
     post = {
         "app_name" : input("app_name>"),
         "app_purpose" : input("app_purpose>"),
-        "user_id" : id,
-        "user_email" : input("email>"),
-        "verification_code" : makeCode(),
+        "user_email" : email,
+        "veri_code" : makeCode(),
         "reporting_date" : {
             'year': int(now.strftime('%y')),
             'month': int(now.strftime('%m')),
@@ -38,6 +37,3 @@ def addApiUser(id):
 
     print(post)
     userdb.apiUser.insert_one(post)
-
-
-addApiUser('5f2b9f1b47b7220d3db83422')
