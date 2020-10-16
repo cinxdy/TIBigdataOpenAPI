@@ -193,4 +193,16 @@
         "password" : "$2b$10$/M2C.2qY/W/XyElOLoRMue8uuN5RtrVjNI0Gs/Wu22l.dOf3PpvgK",
         "auth" : "email",
         "__v" : 0
+},
+{
+        "_id" : ObjectId("5f890451ccdaabf2a341fb03"),
+        "history" : [ ],
+        "myDoc" : [ ],
+        "nickname" : "cindy",
+        "name" : "Jiyoung Shin",
+        "inst" : "Handong Univ",
+        "email" : "cindy@handong.edu",
+        "password" : "0000",
+        "auth" : "email",
+        "__v" : 0
 }

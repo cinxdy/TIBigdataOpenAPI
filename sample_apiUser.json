@@ -1,1 +1,36 @@
-{'app_name': 'hello', 'app_purpose': 'test', 'user_id': '5f2b9f1b47b7220d3db83422', 'user_email': 'cindy@handong.edu', 'verification_code': '$pbkdf2-sha512$25000$htCa854TohQCQOi915pTqg$INwDXd8ZQoQE8k8vtM15359l0PasiNSNmhpJ5dBaNYf7Q5gojx3AVPlTM/MBI0PZ5uHGRp/nln4G4ae8VSciHA', 'reporting_date': {'year': 20, 'month': 10, 'date': 3}, 'expration_date': {'year': 21, 'month': 10, 'date': 3}, 'traffic': 0}
+{
+    "app_name":"hello",
+    "app_purpose":"test",
+    "user_id":"5f2b9f1b47b7220d3db83422",
+    "user_email":"cindy@handong.edu",
+    "verification_code":"$pbkdf2-sha512$25000$htCa854TohQCQOi915pTqg$INwDXd8ZQoQE8k8vtM15359l0PasiNSNmhpJ5dBaNYf7Q5gojx3AVPlTM/MBI0PZ5uHGRp/nln4G4ae8VSciHA",
+    "reporting_date":{
+       "year":20,
+       "month":10,
+       "date":3
+    },
+    "expration_date":{
+       "year":21,
+       "month":10,
+       "date":3
+    },
+    "traffic":0
+ },
+ {
+   "_id" : ObjectId("5f8906b480a8505bf7c30b12"),
+   "app_name" : "Cindy's application",
+   "app_purpose" : "test",
+   "user_email" : "cindy@handong.edu",
+   "veri_code" : "$pbkdf2-sha512$25000$WsvZu5dSKsWYkxJCKMXYmw$IHkN/SxSp4zMaK6FD2f5ySsGYoV9jO/X.feJN9FJjUTSLM.t.H3GpEX8yuWifHEVakcCK8pBf5e1c6Kk1kGZiw",
+   "reporting_date" : {
+           "year" : 20,
+           "month" : 10,
+           "date" : 16
+   },
+   "expiration_date" : {
+           "year" : 21,
+           "month" : 10,
+           "date" : 16
+   },
+   "traffic" : 0
+}
