@@ -3,5 +3,26 @@
 <h1>
     활용 신청
 </h1>
-
+<form method="GET" action="/register">
+    <div>
+        <label for="app_name"> 활용명 </label>
+        <input type="text" name="app_name">
+    </div>
+    <div>
+        <label for="app_purpose"> 활용 목적 </label>
+        <input type="text" name="app_purpose">
+    </div>
+    <div class='button'>
+        <button type="submit">등록</button>
+    </div>
+</form>
+<div>
+    <p>
+        <h5>
+            {% if app_name != None and app_purpose != None %}
+            인증키: {{authKey}}
+            {%endif%}
+        </h5>
+    </p>
+</div>
 {% endblock %}

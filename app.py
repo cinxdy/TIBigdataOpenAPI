@@ -15,24 +15,27 @@ def index():
 
 @app.route('/myInform')
 def myInform():
-    return render_template('myInform.html',doc=getInform())
+    count = db.apiUser.count({"user_email": email_logined})
+    return render_template('myInform.html',email=email_logined,count=count)
 
-#@app.route('/Register')
-#def index():
-#    return render_template('Register.html')
-#
-#    
-#@app.route('/Management')
-#def index():
-#    return render_template('Management.html')
+@app.route('/register', methods=['GET','POST'])
+def register():
+    if request.method == 'POST':
+        app_name = request.form['app_name']
+        app_purpose = request.form['app_purpose']
+    elif request.method == 'GET':
+        app_name = request.args.get('app_name')
+        app_purpose = request.args.get('app_purpose')
+    
+    if app_name == None or app_purpose == None :
+        return render_template('register.html')
 
+    authKey = registerAPI(app_name,app_purpose)
+    return render_template('register.html',app_name=app_name,app_purpose=app_purpose, authKey = authKey)
 
-
-key = token_urlsafe(16)
-hashKey = pbkdf2_sha512.hash(key)
-@app.route('/Key')
-def generateKey():
-    return key
+@app.route('/management')
+def management():
+    return render_template('management.html',doc=getInform())
 
 @app.route('/api')
 def api():
