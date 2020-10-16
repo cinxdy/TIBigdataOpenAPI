@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>
+    활용 관리
+</h1>
+
+{%for item in doc%}
+<h2>
+    {{loop.index}}
+</h2>
+app_name >
+{{item['app_name']}}
+<br>
+app_purpose >
+{{item['app_purpose']}}
+<br>
+<br>
+
+{%endfor%}
+
+{% endblock %}
