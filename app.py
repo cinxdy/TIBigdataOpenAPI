@@ -39,15 +39,17 @@ def management():
 
 @app.route('/api')
 def api():
+    #hashKey = '43760087bcf2f321dac73b60606dcb9dd395ef13634e328183d4ef5e088f26032e227a572da99c86e05e792b1c66d9882ae12fc54b15fc19ba4b76736efd5d7d'
+    #hashKey = "GodLovesYou"
     secretKey = request.args.get('secretKey',"")
     title = request.args.get('title',"")
     body = request.args.get('body',"")
-
+#
     res = esSearch(title,body)
-    return render_template('api.html', response=res['hits']['hits'])
+    return render_template('api.html', response=res)
     
     #if pbkdf2_sha512.verify(secretKey, hashKey):
-    #    return "search for:"+title +"-"+ body
+    #    return render_template('api.html', response=res)
     #return "cannot login"
 #
 if __name__== "__main__":

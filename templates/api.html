@@ -4,7 +4,9 @@
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     </head>
     <body>
-        {{response}}
+        {% for result in response['hits']['hits'] %}
+            {{result['_source']}}
+        {% endfor %}
     </body>
     
 </html>
