@@ -1,10 +1,10 @@
 from flask import Flask, jsonify, request, Response, render_template
 from flask_restful import Resource, Api
-from elasticsearch import Elasticsearch
 from secrets import token_urlsafe
 from passlib.hash import pbkdf2_sha512
 import json
 from mongotest import *
+from estest import *
 
 app = Flask(__name__)
 
@@ -42,10 +42,13 @@ def api():
     secretKey = request.args.get('secretKey',"")
     title = request.args.get('title',"")
     body = request.args.get('body',"")
-    
-    if pbkdf2_sha512.verify(secretKey, hashKey):
-        return "search for:"+title +"-"+ body
-    return "cannot login"
 
+    res = esSearch(title,body)
+    return render_template('api.html', response=res['hits']['hits'])
+    
+    #if pbkdf2_sha512.verify(secretKey, hashKey):
+    #    return "search for:"+title +"-"+ body
+    #return "cannot login"
+#
 if __name__== "__main__":
     app.run(host='127.0.0.1',debug=True)
