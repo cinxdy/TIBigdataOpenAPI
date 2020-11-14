@@ -3,7 +3,7 @@
 <h1>
     활용 신청
 </h1>
-<form method="GET" action="/register">
+<form method="POST" action="/register">
     <div>
         <label for="app_name"> 활용명 </label>
         <input type="text" name="app_name">
@@ -19,7 +19,7 @@
 <div>
     <p>
         <h5>
-            {% if app_name != None and app_purpose != None %}
+            {% if app_name and app_purpose %}
             인증키: {{authKey}}
             {%endif%}
         </h5>

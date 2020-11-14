@@ -19,6 +19,5 @@ def esSearch(request):
             }
         }
     })
-    print(res)
     return res
 

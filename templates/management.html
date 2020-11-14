@@ -8,10 +8,10 @@
 <h2>
     {{loop.index}}
 </h2>
-app_name >
+활용 이름 >
 {{item['app_name']}}
 <br>
-app_purpose >
+활용 목적 >
 {{item['app_purpose']}}
 <br>
 신청일 >
@@ -23,8 +23,19 @@ app_purpose >
 호출량 >
 {{item['traffic']}}
 <br>
-<br>
+<div class='button'>
 
+<form method="POST" action="/management">
+<button type='submit' name='reissue' value={{item['_id']}}>인증키 재발급</button>
+</form>
+<br>
 {%endfor%}
+
+
+{%if authKey%}
+<script>
+alert('성공적으로 인증키가 변경되었습니다.\n인증키 복사하세요:{{authKey}}')
+</script>
+{%endif%}
 
 {% endblock %}

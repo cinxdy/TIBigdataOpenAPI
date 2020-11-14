@@ -5,9 +5,10 @@ from passlib.hash import pbkdf2_sha512
 import json
 from mongotest import *
 from estest import *
-import RNR
+from RNR import *
 
 app = Flask(__name__)
+app.secret_key = 'random string'
 
 @app.route('/')
 @app.route('/mainPage')
@@ -24,31 +25,31 @@ def register():
     if request.method == 'POST':
         app_name = request.form['app_name']
         app_purpose = request.form['app_purpose']
-    elif request.method == 'GET':
-        app_name = request.args.get('app_name')
-        app_purpose = request.args.get('app_purpose')
+        authKey = registerAPI(app_name,app_purpose)
+        return render_template('register.html',app_name=app_name,app_purpose=app_purpose, authKey = authKey)
+
+    return render_template('register.html')
     
-    if app_name == None or app_purpose == None :
-        return render_template('register.html')
+    
 
-    authKey = registerAPI(app_name,app_purpose)
-    return render_template('register.html',app_name=app_name,app_purpose=app_purpose, authKey = authKey)
-
-@app.route('/management')
+@app.route('/management', methods=['GET','POST'])
 def management():
+    if request.method == 'POST':
+        _id = request.form['reissue']
+        authKey = reissue(_id)
+        return render_template('management.html', doc=getInform(), authKey = authKey)
     return render_template('management.html',doc=getInform())
 
 @app.route('/api')
 def api():
     request = requestAPI()
-    data = esSearch(request)
-    res = responseForm(data)
 
-    return render_template('api.html', response=res)
-    
-    if pbkdf2_sha512.verify(secretKey, hashKey):
-        return render_template('api.html', response=res)
-    return "cannot login"
+    if verification(request.serviceKey,findHash()):
+        data = esSearch(request)
+        response = responseAPI(True, request, data)
+    else:
+        response = responseAPI(False, request, None)
+    return render_template('api.html', response=response.response)
 
 if __name__== "__main__":
     app.run(host='0.0.0.0',debug=True)
