@@ -1,0 +1,18 @@
+{
+    "_id":"ObjectId(""5fa906504e2d97464ea5cc57"")",
+    "app_name":"Cindy's Application",
+    "app_purpose":"연구용입니다",
+    "user_email":"cindy@handong.edu",
+    "veri_code":"$pbkdf2-sha512$25000$lFJqba11TglhrJXSOodQyg$XEkXOfsZjwEdRk1lCaMR/7fHEJmJs1sq/2a.xrreNFNwdh1wVtLD18Q0M7j1w6xgpV6M4Xt8AKjVtpGcbwx3VA",
+    "reporting_date":{
+       "year":20,
+       "month":11,
+       "date":9
+    },
+    "expiration_date":{
+       "year":21,
+       "month":11,
+       "date":9
+    },
+    "traffic":0
+ }

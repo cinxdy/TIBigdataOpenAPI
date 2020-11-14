@@ -1,6 +1,6 @@
 {
     "took":41,
-    "timed_out":False,
+    "timed_out": False,
     "_shards":{
        "total":1,
        "successful":1,
