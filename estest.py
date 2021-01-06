@@ -1,10 +1,11 @@
 from elasticsearch import Elasticsearch
 
 #Connect to DB
-serverUrl = "203.252.103.104"
+#serverUrl = "203.252.103.104"
+serverUrl = "203.252.112.15"
 print(serverUrl)
 es = Elasticsearch(hosts=serverUrl, port=9200)
-print (es.cat.indices())
+
 index_name="nkdb200803"
 
 def esSearch(request):

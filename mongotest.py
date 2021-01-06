@@ -57,7 +57,6 @@ def reissue(_id):
             'month': int(now.strftime('%m')),
             'date': int(now.strftime('%d'))
             },
-        "traffic":0
     }
 
     print(post)

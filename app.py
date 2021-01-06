@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request, Response, render_template
 from flask_restful import Resource, Api
+from flask_api import status
 from secrets import token_urlsafe
 from passlib.hash import pbkdf2_sha512
 import json
@@ -29,8 +30,6 @@ def register():
         return render_template('register.html',app_name=app_name,app_purpose=app_purpose, authKey = authKey)
 
     return render_template('register.html')
-    
-    
 
 @app.route('/management', methods=['GET','POST'])
 def management():
@@ -44,12 +43,13 @@ def management():
 def api():
     request = requestAPI()
 
-    if verification(request.serviceKey,findHash()):
-        data = esSearch(request)
-        response = responseAPI(True, request, data)
-    else:
-        response = responseAPI(False, request, None)
-    return render_template('api.html', response=response.response)
+    data = None
+    veri = verification(request.serviceKey,findHash())
+    if veri:
+        try:data = esSearch(request)
+        except: return veri, status.HTTP_502_BAD_GATEWAY
+    response = responseAPI(veri, request, data)
+    return json.dumps(response.response,ensure_ascii = False)
 
 if __name__== "__main__":
     app.run(host='0.0.0.0',debug=True)
