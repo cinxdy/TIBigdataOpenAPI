@@ -74,7 +74,7 @@ def findHash():
     print(hashKeyList)
     return hashKeyList
 
-def verification(serviceKey, hashKeyList):
+def verification(serviceKey, hashKeyList=findHash()):
     for hashKey in hashKeyList:
         if(pbkdf2_sha512.verify(serviceKey, hashKey)):
             return True

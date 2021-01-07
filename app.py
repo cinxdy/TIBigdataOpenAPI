@@ -1,11 +1,9 @@
 from flask import Flask, jsonify, request, Response, render_template
 from flask_restful import Resource, Api
-from flask_api import status
 from secrets import token_urlsafe
 from passlib.hash import pbkdf2_sha512
 import json
 from mongotest import *
-from estest import *
 from RNR import *
 
 app = Flask(__name__)
@@ -41,15 +39,10 @@ def management():
 
 @app.route('/api')
 def api():
-    request = requestAPI()
-
-    data = None
-    veri = verification(request.serviceKey,findHash())
-    if veri:
-        try:data = esSearch(request)
-        except: return veri, status.HTTP_502_BAD_GATEWAY
-    response = responseAPI(veri, request, data)
-    return json.dumps(response.response,ensure_ascii = False)
+    rnr = RNR()
+    response = rnr.do()
+    print(response)
+    return json.dumps(response,ensure_ascii = False)
 
 if __name__== "__main__":
-    app.run(host='0.0.0.0',debug=True)
+    app.run(host='0.0.0.0', debug=True)
