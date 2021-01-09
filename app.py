@@ -6,10 +6,16 @@ import json
 from mongotest import *
 from RNR import *
 
+
 app = Flask(__name__)
 app.secret_key = 'random string'
+global email_logined
 
 @app.route('/')
+def login():
+    email_logined = getEmail()
+    return render_template('mainPage.html')
+
 @app.route('/mainPage')
 def index():
     return render_template('mainPage.html')
@@ -25,8 +31,8 @@ def register():
         app_name = request.form['app_name']
         app_purpose = request.form['app_purpose']
         authKey = registerAPI(app_name,app_purpose)
+        #매크로 차단하는 기능 추가 예정
         return render_template('register.html',app_name=app_name,app_purpose=app_purpose, authKey = authKey)
-
     return render_template('register.html')
 
 @app.route('/management', methods=['GET','POST'])
@@ -34,8 +40,8 @@ def management():
     if request.method == 'POST':
         _id = request.form['reissue']
         authKey = reissue(_id)
-        return render_template('management.html', doc=getInform(), authKey = authKey)
-    return render_template('management.html',doc=getInform())
+        return render_template('management.html', doc=getInform(email_logined), authKey = authKey)
+    return render_template('management.html', doc=getInform(email_logined))
 
 @app.route('/api')
 def api():

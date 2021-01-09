@@ -54,15 +54,17 @@ class RNR:
             return -1
 
     def makeResponse(self):
+        #print("input serviceKey:"+self.serviceKey)
+        if not verification(self.serviceKey):
+            self.raiseError('401','Unauthorized')
+            return -1
+
         try: data = esSearch(self)
         except:
             self.raiseError('502','Bad Gateway')
             return -1
 
-        if not verification(self.serviceKey):
-            self.raiseError('401','Unauthorized')
-            return -1
-    
+
         self.response['response']['body'] = {
                 "numOfCnt": self.numOfCnt,
                 "totalCnt": data['hits']['total']['value'],
