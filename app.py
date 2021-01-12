@@ -4,11 +4,12 @@ from secrets import token_urlsafe
 from passlib.hash import pbkdf2_sha512
 import json
 from kubic_user import *
-from RNR import *
+from kubic_api import *
 
 app = Flask(__name__)
 app.secret_key = 'random string'
 
+@app.route('/')
 @app.route('/mainPage')
 def index():
     return render_template('mainPage.html')
@@ -38,8 +39,10 @@ def management():
 
 @app.route('/api')
 def api():
-    rnr = RNR()
-    response = rnr.do()
+    #get HTTP request and check validity
+    request, resultCode, resultMSG = makeRequest()
+    response = makeResponse(request, resultCode, resultMSG)
+        
     print(response)
     return json.dumps(response,ensure_ascii = False)
 

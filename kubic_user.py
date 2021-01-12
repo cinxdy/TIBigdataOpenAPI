@@ -2,21 +2,24 @@
 from pymongo import MongoClient
 from secrets import token_urlsafe 
 from passlib.hash import pbkdf2_sha512
-import datetime
+from datetime import datetime
 #import logging
 
 client = MongoClient('localhost',27017)
 db = client.user
-email_logined = getEmail()
 
 def getEmail():
-    email_logined = "21800409@handong.edu"
+    email_logined = "cindy@handong.edu"
     #app.logger.debug('getEmail():'+'email_logined:'+email_logined)
     return email_logined
+
+
+email_logined = getEmail()
 
 def countAPI():
     count = db.apiUser.count({"user_email": email_logined})
     return count
+
 def generateCode():
     key = token_urlsafe(16)
     hashKey = pbkdf2_sha512.hash(key)
@@ -24,7 +27,7 @@ def generateCode():
     return key, hashKey
 
 def registerAPI(app_name, app_purpose):
-    now = datetime.datetime.now().date()
+    today = datetime.today()
     key, hashKey = generateCode()
 
     post = {
@@ -33,14 +36,15 @@ def registerAPI(app_name, app_purpose):
         "user_email" : email_logined,
         "veri_code" : hashKey,
         "reporting_date" : {
-            'year': int(now.strftime('%y')),
-            'month': int(now.strftime('%m')),
-            'date': int(now.strftime('%d'))
+            'year': int(today.year),
+            'month': int(today.month),
+            'date': int(today.day)
             },
         "expiration_date" : {
-            'year': int(now.strftime('%y'))+1,
-            'month': int(now.strftime('%m')),
-            'date': int(now.strftime('%d'))
+            'year': int(today.year)+1,
+            'month': int(today.month),
+            'date': int(today.day)
+
             },
         "traffic":0
     }
