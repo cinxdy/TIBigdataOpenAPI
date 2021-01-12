@@ -3,18 +3,11 @@ from flask_restful import Resource, Api
 from secrets import token_urlsafe
 from passlib.hash import pbkdf2_sha512
 import json
-from mongotest import *
+from kubic_user import *
 from RNR import *
-
 
 app = Flask(__name__)
 app.secret_key = 'random string'
-global email_logined
-
-@app.route('/')
-def login():
-    email_logined = getEmail()
-    return render_template('mainPage.html')
 
 @app.route('/mainPage')
 def index():
@@ -22,7 +15,7 @@ def index():
 
 @app.route('/myInform')
 def myInform():
-    count = db.apiUser.count({"user_email": email_logined})
+    count = countAPI()
     return render_template('myInform.html',email=email_logined,count=count)
 
 @app.route('/register', methods=['GET','POST'])
@@ -40,8 +33,8 @@ def management():
     if request.method == 'POST':
         _id = request.form['reissue']
         authKey = reissue(_id)
-        return render_template('management.html', doc=getInform(email_logined), authKey = authKey)
-    return render_template('management.html', doc=getInform(email_logined))
+        return render_template('management.html', doc=getInform(), authKey = authKey)
+    return render_template('management.html', doc=getInform())
 
 @app.route('/api')
 def api():

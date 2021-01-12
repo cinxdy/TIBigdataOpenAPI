@@ -3,23 +3,27 @@ from pymongo import MongoClient
 from secrets import token_urlsafe 
 from passlib.hash import pbkdf2_sha512
 import datetime
-import logging
+#import logging
 
 client = MongoClient('localhost',27017)
 db = client.user
+email_logined = getEmail()
 
 def getEmail():
     email_logined = "21800409@handong.edu"
     #app.logger.debug('getEmail():'+'email_logined:'+email_logined)
     return email_logined
 
+def countAPI():
+    count = db.apiUser.count({"user_email": email_logined})
+    return count
 def generateCode():
     key = token_urlsafe(16)
     hashKey = pbkdf2_sha512.hash(key)
     #app.logger.debug('generateCode:'+"key"+key+"hashKey"+hashKey)
     return key, hashKey
 
-def registerAPI(email_logined, app_name, app_purpose):
+def registerAPI(app_name, app_purpose):
     now = datetime.datetime.now().date()
     key, hashKey = generateCode()
 
@@ -67,18 +71,18 @@ def reissue(_id):
     #app.logger.debug('reissue():'+'_id:'+_id+'post:'+str(post)+'key:'+key)
     return key
 
-def getInform(email_logined):
+def getInform():
     doc = db.apiUser.find({"user_email": email_logined})
     #app.logger.debug('getInform():'+'email_logined:'+email_logined+'doc:'+str(doc))
     return doc
 
-def findHash(email_logined):
-    doc = getInform(email_logined)
+def findHash():
+    doc = getInform()
     hashKeyList = [item['veri_code'] for item in doc]
     #app.logger.debug('findHash():'+'email_logined:'+email_logined+'hashKeyList:'+str(hashKeyList))
     return hashKeyList
 
-def verification(serviceKey, hashKeyList):
+def verification(serviceKey, hashKeyList=findHash()):
     for hashKey in hashKeyList:
         if(pbkdf2_sha512.verify(serviceKey, hashKey)):
             return True
