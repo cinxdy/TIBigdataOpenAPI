@@ -33,6 +33,7 @@ def register():
 def management():
     if request.method == 'POST':
         _id = request.form['reissue']
+        print("_id",_id)
         authKey = reissue(_id)
         return render_template('management.html', doc=getInform(), authKey = authKey)
     return render_template('management.html', doc=getInform())
@@ -42,7 +43,7 @@ def api():
     #get HTTP request and check validity
     request, resultCode, resultMSG = makeRequest()
     response = makeResponse(request, resultCode, resultMSG)
-        
+
     print(response)
     return json.dumps(response,ensure_ascii = False)
 
