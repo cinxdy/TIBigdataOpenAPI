@@ -34,10 +34,10 @@ def makeRequest():
 
 def esSearch(request, host ='203.252.103.104', index='nkdb200803'):
     #Connect to DB
-    #host = '203.252.112.14'
-    #ES = Elasticsearch([{'host': host, 'port': '9200'}], http_auth=(esAcc.id, esAcc.password))
-    
-    ES = Elasticsearch(host = host, port=9200)
+    host = '203.252.112.14'
+    ES = Elasticsearch([{'host': host, 'port': '9200'}], http_auth=(esAcc.id, esAcc.password))
+    index="monstache_index"
+    #ES = Elasticsearch(host = host, port=9200)
     print(ES.cat.indices())
 
     #search the document
@@ -46,15 +46,7 @@ def esSearch(request, host ='203.252.103.104', index='nkdb200803'):
             "bool": {
                 "must": [
                     { "match": { "post_title": request['keyInTitle'] } },
-                    { "bool":{
-                        "should": [
-                            {"match": {"post_body": request['keyInBody']}},
-                            {"match": {"post_writer": request['writer'] }},
-                        ]
-                    }
-                    }
-
-                    ],
+                ],
                 "filter": [{"range": { "indexed_datetime": { "gte": request['startDate'], "lte": request['endDate'] }}}]
             }
         }
