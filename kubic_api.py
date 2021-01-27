@@ -34,32 +34,35 @@ def makeRequest():
 
 def esSearch(request, host ='203.252.103.104', index='nkdb200803'):
     #Connect to DB
-    #host = '203.252.112.14'
-    #ES = Elasticsearch([{'host': host, 'port': '9200'}], http_auth=(esAcc.id, esAcc.password))
-    
-    ES = Elasticsearch(host = host, port=9200)
+    host = '203.252.112.14'
+    ES = Elasticsearch([{'host': host, 'port': '9200'}], http_auth=(esAcc.id, esAcc.password))
+    index = 'monstache_index'
+    # ES = Elasticsearch(host = host, port=9200)
     print(ES.cat.indices())
 
     #search the document
     response = ES.search(index=index, body={
+        "size": request['numOfCnt'],
         "query": {
             "bool": {
                 "must": [
                     { "match": { "post_title": request['keyInTitle'] } },
                     { "bool":{
                         "should": [
-                            {"match": {"post_body": request['keyInBody']}},
-                            {"match": {"post_writer": request['writer'] }},
+                            # {"match": {"post_body": request['keyInBody']}},
+                            # {"match": {"post_writer": request['writer'] }},
+                            # {"match": {"published_institution": request['institution'] }},
+                            # {"match": {"top_category": request['category'] }},
                         ]
                     }
                     }
 
                     ],
-                "filter": [{"range": { "indexed_datetime": { "gte": request['startDate'], "lte": request['endDate'] }}}]
+                # "filter": [{"range": { "post_date": { "gte": request['startDate'], "lte": request['endDate'] }}}]
             }
         }
     })
-    print("response:",str(response)[:30])
+    #print("response:",str(response)[:30])
     return response
 
 def raiseError(response, resultCode, resultMSG):
@@ -99,7 +102,7 @@ def makeResponse(request, resultCode, resultMSG):
                     "body": content['_source']['post_body'],
                     #' '.join(content['_source']['post_body'].split())[:400],
                     "writer": content['_source']['post_writer'],
-                    "date" : content['_source']['post_date'],
+                    "date": content['_source']['post_date'] if 'post_date' in content['_source'] else None,
                     "institution": content['_source']['published_institution'],
                     "institutionURL": content['_source']['published_institution_url'],
                     "category": content['_source']['top_category'],
@@ -108,5 +111,5 @@ def makeResponse(request, resultCode, resultMSG):
                     #content['_source']['file_download_url'],
                 }for content in data['hits']['hits']]
                 }
-    print(str(response)[:30])
+    # print(str(response)[:30])
     return response

@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, Response, render_template
+from flask import Flask, jsonify, request, Response, render_template, abort
 from flask_restful import Resource, Api
 from secrets import token_urlsafe
 from passlib.hash import pbkdf2_sha512
@@ -8,11 +8,29 @@ from kubic_api import *
 
 app = Flask(__name__)
 app.secret_key = 'random string'
-
-@app.route('/')
-@app.route('/mainPage')
+key_saved =0 
+@app.route('/', methods=['GET','POST'])
+@app.route('/mainPage', methods=['GET','POST'])
 def index():
-    return render_template('mainPage.html')
+    global key_saved
+    if request.method == 'POST':
+        # id = request.form['email']
+        id = request.get_json().get('email')
+        print("IP:", request.remote_addr)
+        print("ID:", id)
+        key = token_urlsafe(8)
+        print("key:", key)
+        key_saved = key
+        return key, 200
+    if request.method == 'GET':
+        print("IP:", request.remote_addr)
+        id = request.args.get("K",'')
+        print("ID:", id)
+
+    if key_saved == id:
+        print("Success!")
+        return render_template('mainPage.html')
+    else: abort(403)
 
 @app.route('/myInform')
 def myInform():
@@ -44,8 +62,8 @@ def api():
     request, resultCode, resultMSG = makeRequest()
     response = makeResponse(request, resultCode, resultMSG)
 
-    print(response)
+    #print(response)
     return json.dumps(response,ensure_ascii = False)
 
 if __name__== "__main__":
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=True, port=4000)
