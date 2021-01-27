@@ -1,0 +1,13 @@
+green  open .security-7                         9W1qTxSDSFGixfxNjHEoeQ 1 0      53     2 146.3kb 146.3kb
+green  open .apm-custom-link                    jYEhdZoDR9aYbUNQ4I2m4Q 1 0       0     0    208b    208b
+yellow open read_me                             vD4iVvLpTMaH1B3x_1iCNQ 1 1       0     0    208b    208b
+green  open .kibana_task_manager_1              8B_q2wYUQtuLjXUefjFcDA 1 0       6 17616   1.5mb   1.5mb
+green  open kibana_sample_data_ecommerce        1R649DnsQsKP4loqrRpIRA 1 0    4675     0     4mb     4mb
+yellow open metricbeat-7.10.1-2021.01.21-000001 uod3YalbQ8iVohfF0ASMeg 1 1 1798652     0     1gb     1gb
+green  open .apm-agent-configuration            Ju1wvpC_R6mQCX-2EJlt0A 1 0       0     0    208b    208b
+yellow open nkdb                                1jKW2xyrSLOKDyV_91K7rQ 1 1       0     0    208b    208b
+green  open .kibana-event-log-7.10.1-000001     91wVEqf4QlGRyjyeH8WVQQ 1 0      18     0  45.7kb  45.7kb
+green  open .async-search                       BzzTi5OkQFmPmuvWKWhNjQ 1 0       0     0    231b    231b
+yellow open monstache_index                     lhUCt1v-R-SLbpEAm0v4Mw 1 1   21804     0   2.2gb   2.2gb
+green  open .kibana_1                           XupHrIQ0T_eemdnSMTrtWQ 1 0    2174   774   4.1mb   4.1mb
+
