@@ -38,6 +38,7 @@ def esSearch(request, host ='203.252.103.104', index='nkdb200803'):
     ES = Elasticsearch([{'host': host, 'port': '9200'}], http_auth=(esAcc.id, esAcc.password))
     index = 'monstache_index'
     # ES = Elasticsearch(host = host, port=9200)
+
     print(ES.cat.indices())
 
     #search the document
@@ -64,7 +65,7 @@ def esSearch(request, host ='203.252.103.104', index='nkdb200803'):
     })
     #print("response:",str(response)[:30])
     return response
-
+    
 def raiseError(response, resultCode, resultMSG):
     response['header']['resultCode'] = resultCode
     response['header']['resultMSG'] = resultMSG
