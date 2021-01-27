@@ -5,9 +5,11 @@ from passlib.hash import pbkdf2_sha512
 import json
 from kubic_user import *
 from kubic_api import *
+import logging
 
 app = Flask(__name__)
 app.secret_key = 'random string'
+logging.basicConfig(filename='./logs/2021-01-27.log')
 key_saved =0 
 @app.route('/', methods=['GET','POST'])
 @app.route('/mainPage', methods=['GET','POST'])
@@ -66,4 +68,4 @@ def api():
     return json.dumps(response,ensure_ascii = False)
 
 if __name__== "__main__":
-    app.run(host='0.0.0.0', debug=True, port=4000)
+    app.run(host='0.0.0.0', debug=True)
