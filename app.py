@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, Response, render_template, abort
+from flask import Flask, jsonify, request, Response, render_template, abort, session, redirect, url_for
 from flask_restful import Resource, Api
 from secrets import token_urlsafe
 from passlib.hash import pbkdf2_sha512
@@ -9,30 +9,41 @@ import logging
 
 app = Flask(__name__)
 app.secret_key = 'random string'
-logging.basicConfig(filename='./logs/2021-01-27.log')
+# logging.basicConfig(filename='./logs/2021-01-27.log')
 key_saved =0 
 @app.route('/', methods=['GET','POST'])
 @app.route('/mainPage', methods=['GET','POST'])
 def index():
     global key_saved
     if request.method == 'POST':
-        # id = request.form['email']
         id = request.get_json().get('email')
-        print("IP:", request.remote_addr)
-        print("ID:", id)
+        ip = request.remote_addr
         key = token_urlsafe(8)
-        print("key:", key)
-        key_saved = key
-        return key, 200
-    if request.method == 'GET':
-        print("IP:", request.remote_addr)
-        id = request.args.get("K",'')
-        print("ID:", id)
 
-    if key_saved == id:
-        print("Success!")
+        session['id'] = id
+        session['ip'] = ip
+        session['key'] = key
+
+        print("ID:", id)
+        print("IP:", ip)
+        print("key:", key)
+
+        return key, 200
+
+    if request.method == 'GET':
+        ip = request.remote_addr
+        key = request.args.get("K",'')
+
+        if 'id' in session:
+            print("ID:", session['id'])
+        print("IP:", ip)
+        print("key:", key)        
+        
+        # if session['key'] == key:   
+            # print("Success!")
+            # session['veri'] = True
         return render_template('mainPage.html')
-    else: return render_template('mainPage.html')#abort(403)
+    else: abort(403)
 
 @app.route('/myInform')
 def myInform():
