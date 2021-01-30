@@ -32,7 +32,7 @@ def index():
     if key_saved == id:
         print("Success!")
         return render_template('mainPage.html')
-    else: abort(403)
+    else: return render_template('mainPage.html')#abort(403)
 
 @app.route('/myInform')
 def myInform():
@@ -68,4 +68,4 @@ def api():
     return json.dumps(response,ensure_ascii = False)
 
 if __name__== "__main__":
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=True, port=15000)
