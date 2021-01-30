@@ -3,7 +3,7 @@ from elasticsearch import Elasticsearch
 
 
 host = '203.252.112.14'
-ES = Elasticsearch([{'host': host, 'port': '9200'}], http_auth=(esAcc.id, esAcc.password))
+ES = Elasticsearch([{'host': host, 'port': '19200'}], http_auth=(esAcc.id, esAcc.password))
 index = 'monstache_index'
 # ES = Elasticsearch(host = host, port=9200)
 print(ES.cat.indices())

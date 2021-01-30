@@ -10,6 +10,7 @@ def makeRequest():
         'serviceKey': request.args.get('serviceKey') ,
         'numOfCnt': request.args.get('numOfCnt', 100),
         'rank': request.args.get('rank', 1),
+        'keyword': request.args.get('keyword',""),
         'keyInTitle': request.args.get('keyInTitle',""),
         'keyInBody': request.args.get('keyInBody',""),
         'writer': request.args.get('writer',""),
@@ -22,7 +23,7 @@ def makeRequest():
     if kubic_request['serviceKey']=="":
         resultCode = 400
         resultMSG = 'Bad Request: No serviceKey'
-    elif kubic_request['keyInTitle']=="":
+    elif kubic_request['keyword']=="" and kubic_request['keyInTitle'] == "":
         resultCode = 400
         resultMSG = 'Bad Request: No KeyInTitle'
     else:
@@ -32,38 +33,50 @@ def makeRequest():
     print("request:",kubic_request,'resultCode:',resultCode)
     return kubic_request, resultCode, resultMSG
 
-def esSearch(request, host ='203.252.103.104', index='nkdb200803'):
+def esSearch(request):
     #Connect to DB
-    host = '203.252.112.14'
-    ES = Elasticsearch([{'host': host, 'port': '9200'}], http_auth=(esAcc.id, esAcc.password))
-    index = 'monstache_index'
+    ES = Elasticsearch([{'host': esAcc.host, 'port': esAcc.port}], http_auth=(esAcc.id, esAcc.password))
+
     # ES = Elasticsearch(host = host, port=9200)
 
-    print(ES.cat.indices())
+    # print(ES.cat.indices())
 
     #search the document
-    response = ES.search(index=index, body={
-        "size": request['numOfCnt'],
-        "query": {
-            "bool": {
-                "must": [
-                    { "match": { "post_title": request['keyInTitle'] } },
-                    { "bool":{
-                        "should": [
-                            # {"match": {"post_body": request['keyInBody']}},
-                            # {"match": {"post_writer": request['writer'] }},
-                            # {"match": {"published_institution": request['institution'] }},
-                            # {"match": {"top_category": request['category'] }},
-                        ]
-                    }
-                    }
+#     response = ES.search(index=index, body={    
+#     "size": request['numOfCnt'],
+#     "query": {
+#       "multi_match": {
+#         "query": request['keyword'],
+#         "fields": ["post_title", "post_body", "fileName", "fileContent"]
+#       }
+#     }
+#   })
 
-                    ],
-                # "filter": [{"range": { "post_date": { "gte": request['startDate'], "lte": request['endDate'] }}}]
-            }
-        }
-    })
-    #print("response:",str(response)[:30])
+    query = {
+    "size": request['numOfCnt'],
+    "query": {
+        "bool": {
+            "must":[
+                {"wildcard": {"post_title": "*"+request['keyInTitle']+"*" }},
+            ],
+            # "sort": [{"post_date": {"order" : "desc" #오름차순: asc, 내림차순: desc 
+            # }}]    
+            "filter": {"range": { "post_date": { "gte": request['startDate'], "lte": request['endDate'] }}}
+        },
+    }
+    }
+
+    if not request['keyInBody'] == "":
+        query['query']['bool']['must'].append({"wildcard": {"post_body": "*"+request['keyInBody']+"*" }})
+    if not request['writer'] == "":
+        query['query']['bool']['must'].append({"wildcard": {"post_writer": "*"+request['writer']+"*" }})
+    if not request['institution'] == "":
+        query['query']['bool']['must'].append({"wildcard": {"published_institution": "*"+request['institution']+"*" }})
+    
+    print("query: ",query)
+    response = ES.search(index=esAcc.index, body=query)
+
+    print("response:",str(response)[:30])
     return response
     
 def raiseError(response, resultCode, resultMSG):
@@ -89,7 +102,7 @@ def makeResponse(request, resultCode, resultMSG):
     except Exception as e:
         print(e)
         return raiseError(response, 502,'Bad Gateway')
-    print('origin data from ES:',data)
+    # print('origin data from ES:',data)
 
     if data['hits']['total']['value']==0:
         return raiseError(response, 204,'No Content')
@@ -112,5 +125,5 @@ def makeResponse(request, resultCode, resultMSG):
                     #content['_source']['file_download_url'],
                 }for content in data['hits']['hits']]
                 }
-    # print(str(response)[:30])
+    print("response:", response['header']['resultCode'])
     return response
