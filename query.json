@@ -1,0 +1,29 @@
+# 단순 검색
+
+{    
+    "size": request['numOfCnt'],
+    "query": {
+      "multi_match": {
+        "query": request['keyword'],
+        "fields": ["post_title", "post_body", "fileName", "fileContent"]
+      }
+    }
+  }
+
+
+# 상세 검색
+{
+    "size": request['numOfCnt'],
+    "query": {
+        "bool": {
+            "should":[
+                {"match": {"post_title": request['keyInTitle'] }},
+                {"match": {"post_body": request['keyInBody'] }},
+                {"match": {"post_writer": request['writer'] }},
+                {"match": {"published_institution": request['institution'] }},
+            ],
+            "sort": [{"post_date": {"order" : "desc" #오름차순: asc, 내림차순: desc }}]    
+        },
+        "filter": {"range": { "post_date": { "gte": request['startDate'], "lte": request['endDate'] }}}
+    }
+}
