@@ -65,8 +65,8 @@ def management():
         _id = request.form['reissue']
         # print("_id",_id)
         authKey = reissue(_id)
-        return render_template('management.html', doc=getInform(), authKey = authKey)
-    return render_template('management.html', doc=getInform())
+        return render_template('management.html', doc=getDocByEmail(), authKey = authKey)
+    return render_template('management.html', doc=getDocByEmail())
 
 @app.route('/api')
 def api():
