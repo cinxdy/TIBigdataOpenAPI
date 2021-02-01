@@ -4,10 +4,12 @@ from bson.objectid import ObjectId
 from secrets import token_urlsafe 
 from passlib.hash import pbkdf2_sha512
 from datetime import datetime
+from dateutil.relativedelta import relativedelta
 #import logging
 
 client = MongoClient('localhost',27017)
 db = client.user
+trafficLimit = 3
 
 def getEmail():
     email_logined = "cindy@handong.edu"
@@ -35,16 +37,8 @@ def registerAPI(app_name, app_purpose):
         "app_purpose" : app_purpose,
         "user_email" : email_logined,
         "veri_code" : hashKey,
-        "reporting_date" : {
-            'year': int(today.year),
-            'month': int(today.month),
-            'date': int(today.day)
-            },
-        "expiration_date" : {
-            'year': int(today.year)+1,
-            'month': int(today.month),
-            'date': int(today.day)
-            },
+        "reporting_date" : today,
+        "expiration_date" : (today+relativedelta(years=1)),
         "traffic":0
     }
 
@@ -59,42 +53,52 @@ def reissue(_id):
     post = {
         "app_name" : "testtesttest",
         "veri_code" : hashKey,
-        "reporting_date" : {
-            'year': int(today.year),
-            'month': int(today.month),
-            'date': int(today.day)
-            },
-        "expiration_date" : {
-            'year': int(today.year)+1,
-            'month': int(today.month),
-            'date': int(today.day)
-            },
-    }
-    db.apiUser.update({"_id": ObjectId(_id)}, {'$set':post})
-    print("reissue> _id",_id,"key", key)
+        "reporting_date" : today,
+        "expiration_date" : (today+elativedelta(years=1)),
+        }
+
+    db.apiUser.update({"_id": ObjectId(_id)}, {'$set': post})
+    print("reissue> app_name", post['app_name'],"key", key)
     #app.logger.debug('reissue():'+'_id:'+_id+'post:'+str(post)+'key:'+key)
     return key
 
-def getInform():
-    doc = db.apiUser.find({"user_email": email_logined})
+def getDocByEmail():
+    docList = db.apiUser.find({"user_email": email_logined})
+    #app.logger.debug('getInform():'+'email_logined:'+email_logined+'doc:'+str(doc))
+    return docList
+
+def getDocById(_id):
+    doc = db.apiUser.find_one({"_id": ObjectId(_id)})
     #app.logger.debug('getInform():'+'email_logined:'+email_logined+'doc:'+str(doc))
     return doc
 
 def findHash():
-    doc = getInform()
+    doc = getDocByEmail()
     hashKeyList = [item['veri_code'] for item in doc]
     #app.logger.debug('findHash():'+'email_logined:'+email_logined+'hashKeyList:'+str(hashKeyList))
     return hashKeyList
 
-def verification(serviceKey, hashKeyList=findHash()):
+def verification(serviceKey):
+    hashKeyList = findHash()
     for hashKey in hashKeyList:
         if(pbkdf2_sha512.verify(serviceKey, hashKey)):
-            #countUpTraffic(hashKey)
-            return True
+            doc = db.apiUser.find_one({"veri_code": hashKey})
+            return doc['_id']
     return False
 
-def countUpTraffic(hashKey):
-    traffic = db.apiUser.find({"user_email": email_logined, "hashKey":hashKey})
-    post = {"traffic" : traffic+1}
-    db.apiUser.update({"user_email": email_logined, "hashKey":hashKey}, post)
+def limitTraffic(_id):
+    doc = getDocById(_id)
+    if doc['traffic'] > trafficLimit:
+        return False
+    
+    post = {"traffic" : doc['traffic']+1}
+    db.apiUser.update({"_id": ObjectId(_id)}, {'$set':post})
+    doc = getDocById(_id)
+    print(doc)
+    return True
 
+def limitDate(_id):
+    doc = getDocById(_id)
+    if doc['expiration_date'] < datetime.today():
+        return False
+    return True

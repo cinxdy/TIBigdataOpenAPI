@@ -6,6 +6,7 @@ from elasticsearch import Elasticsearch
 import esAccount as esAcc
 
 def makeRequest():
+
     kubic_request = {
         'serviceKey': request.args.get('serviceKey') ,
         'numOfCnt': request.args.get('numOfCnt', 100),
@@ -25,19 +26,18 @@ def makeRequest():
         resultMSG = 'Bad Request: No serviceKey'
     elif kubic_request['keyword']=="" and kubic_request['keyInTitle'] == "":
         resultCode = 400
-        resultMSG = 'Bad Request: No KeyInTitle'
+        resultMSG = 'Bad Request: No keyInTitle'
     else:
         resultCode = 200
         resultMSG = 'OK'
     
-    print("request:",kubic_request,'resultCode:',resultCode)
     return kubic_request, resultCode, resultMSG
 
 def esSearch(request):
     #Connect to DB
-    ES = Elasticsearch([{'host': esAcc.host, 'port': esAcc.port}], http_auth=(esAcc.id, esAcc.password))
+    # ES = Elasticsearch([{'host': esAcc.host, 'port': esAcc.port}], http_auth=(esAcc.id, esAcc.password))
 
-    # ES = Elasticsearch(host = host, port=9200)
+    ES = Elasticsearch(host = '203.252.103.119', port=9200)
 
     # print(ES.cat.indices())
 
@@ -76,7 +76,7 @@ def esSearch(request):
     print("query: ",query)
     response = ES.search(index=esAcc.index, body=query)
 
-    print("response:",str(response)[:30])
+    # print("response:",str(response)[:30])
     return response
     
 def raiseError(response, resultCode, resultMSG):
@@ -95,8 +95,15 @@ def makeResponse(request, resultCode, resultMSG):
     if resultCode > 300:
         return response
 
-    if not verification(request['serviceKey']):
+    _id = verification(request['serviceKey'])
+    if not _id:
         return raiseError(response, 401,'Unauthorized')
+        
+    if not limitDate(_id):
+        return raiseError(response, 401,'Expired')
+    
+    if not limitTraffic(_id):
+        return raiseError(response, 401,'Overused')
 
     try: data = esSearch(request)
     except Exception as e:
@@ -125,5 +132,4 @@ def makeResponse(request, resultCode, resultMSG):
                     #content['_source']['file_download_url'],
                 }for content in data['hits']['hits']]
                 }
-    print("response:", response['header']['resultCode'])
     return response
