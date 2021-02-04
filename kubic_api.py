@@ -114,14 +114,19 @@ def makeResponse(request, resultCode, resultMSG):
     if data['hits']['total']['value']==0:
         return raiseError(response, 204,'No Content')
 
+    def slicingBody():
+        post_body = ' '.join(content['_source']['post_body'].split())
+        if len(post_body) > 400:
+            post_body = post_body[:400]
+        return post_body
+
     response['body'] = {
                 "numOfCnt": request['numOfCnt'],
                 "totalCnt": data['hits']['total']['value'],
                 "rank" : request['rank'],
                 "contents":[{
                     "title": content['_source']['post_title'],
-                    "body": content['_source']['post_body'],
-                    #' '.join(content['_source']['post_body'].split())[:400],
+                    "body": lambda:slicingBody(),
                     "writer": content['_source']['post_writer'],
                     "date": content['_source']['post_date'] if 'post_date' in content['_source'] else None,
                     "institution": content['_source']['published_institution'],
