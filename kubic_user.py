@@ -9,7 +9,7 @@ from dateutil.relativedelta import relativedelta
 
 client = MongoClient('localhost',27017)
 db = client.user
-trafficLimit = 3
+trafficLimit = 3000
 
 def getEmail():
     email_logined = "cindy@handong.edu"
@@ -90,11 +90,6 @@ def limitTraffic(_id):
     doc = getDocById(_id)
     if doc['traffic'] > trafficLimit:
         return False
-    
-    post = {"traffic" : doc['traffic']+1}
-    db.apiUser.update({"_id": ObjectId(_id)}, {'$set':post})
-    doc = getDocById(_id)
-    print(doc)
     return True
 
 def limitDate(_id):
@@ -102,3 +97,10 @@ def limitDate(_id):
     if doc['expiration_date'] < datetime.today():
         return False
     return True
+
+def raiseTraffic(_id, numOfCnt):
+    doc = getDocById(_id)
+    post = {"traffic" : doc['traffic']+numOfCnt}
+    db.apiUser.update({"_id": ObjectId(_id)}, {'$set':post})
+    doc = getDocById(_id)
+    print(doc)

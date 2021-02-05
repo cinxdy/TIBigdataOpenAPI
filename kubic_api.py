@@ -132,4 +132,6 @@ def makeResponse(request, resultCode, resultMSG):
                     #content['_source']['file_download_url'],
                 }for content in data['hits']['hits']]
                 }
+    
+    raiseTraffic( _id, request['numOfCnt'] if request['numOfCnt'] < data['hits']['total']['value'] else data['hits']['total']['value'])
     return response
