@@ -54,7 +54,7 @@ def reissue(_id):
         "app_name" : "testtesttest",
         "veri_code" : hashKey,
         "reporting_date" : today,
-        "expiration_date" : (today+elativedelta(years=1)),
+        "expiration_date" : (today+relativedelta(years=1)),
         }
 
     db.apiUser.update({"_id": ObjectId(_id)}, {'$set': post})
