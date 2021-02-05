@@ -7,6 +7,23 @@ import esAccount as esAcc
 
 def makeRequest():
 
+    keyList = ['serviceKey','numOfCnt','rank','keyword','keyInTitle','keyInBody','writer','startDate','endDate','institution','category' ]
+
+    for k in request.args.key():
+        if not k in keyList:
+            resultCode = 400
+            resultMSG = 'Bad Request: ' + k
+    
+    if not 'serviceKey' in request.args:
+        resultCode = 400
+        resultMSG = 'Bad Request: No serviceKey'
+
+    elif not 'keyword' in request.args and not 'keyInTitle' in request.args:
+        resultCode = 400
+        resultMSG = 'Bad Request: No keyInTitle'
+
+    return kubic_request, resultCode, resultMSG
+
     kubic_request = {
         'serviceKey': request.args.get('serviceKey') ,
         'numOfCnt': request.args.get('numOfCnt', 100),
@@ -21,15 +38,8 @@ def makeRequest():
         'category': request.args.get('category',""),
     }
 
-    if kubic_request['serviceKey']=="":
-        resultCode = 400
-        resultMSG = 'Bad Request: No serviceKey'
-    elif kubic_request['keyword']=="" and kubic_request['keyInTitle'] == "":
-        resultCode = 400
-        resultMSG = 'Bad Request: No keyInTitle'
-    else:
-        resultCode = 200
-        resultMSG = 'OK'
+    resultCode = 200
+    resultMSG = 'OK'
     
     return kubic_request, resultCode, resultMSG
 
@@ -92,7 +102,7 @@ def makeResponse(request, resultCode, resultMSG):
             },
             "body": {}
         }
-    if resultCode > 300:
+    if resultCode != 200:
         return response
 
     _id = verification(request['serviceKey'])

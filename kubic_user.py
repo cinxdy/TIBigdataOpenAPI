@@ -13,7 +13,6 @@ trafficLimit = 3000
 
 def getEmail():
     email_logined = "cindy@handong.edu"
-    #app.logger.debug('getEmail():'+'email_logined:'+email_logined)
     return email_logined
 
 email_logined = getEmail()
@@ -25,7 +24,6 @@ def countAPI():
 def generateCode():
     key = token_urlsafe(16)
     hashKey = pbkdf2_sha512.hash(key)
-    #app.logger.debug('generateCode:'+"key"+key+"hashKey"+hashKey)
     return key, hashKey
 
 def registerAPI(app_name, app_purpose):
@@ -43,7 +41,6 @@ def registerAPI(app_name, app_purpose):
     }
 
     db.apiUser.insert_one(post)
-    #app.logger.debug('registerAPI():'+'email_logined:'+email_logined+'post:'+str(post)+'key:'+key)
     return key
 
 def reissue(_id):
@@ -59,23 +56,19 @@ def reissue(_id):
 
     db.apiUser.update({"_id": ObjectId(_id)}, {'$set': post})
     print("reissue> app_name", post['app_name'],"key", key)
-    #app.logger.debug('reissue():'+'_id:'+_id+'post:'+str(post)+'key:'+key)
     return key
 
 def getDocByEmail():
     docList = db.apiUser.find({"user_email": email_logined})
-    #app.logger.debug('getInform():'+'email_logined:'+email_logined+'doc:'+str(doc))
     return docList
 
 def getDocById(_id):
     doc = db.apiUser.find_one({"_id": ObjectId(_id)})
-    #app.logger.debug('getInform():'+'email_logined:'+email_logined+'doc:'+str(doc))
     return doc
 
 def findHash():
     doc = getDocByEmail()
     hashKeyList = [item['veri_code'] for item in doc]
-    #app.logger.debug('findHash():'+'email_logined:'+email_logined+'hashKeyList:'+str(hashKeyList))
     return hashKeyList
 
 def verification(serviceKey):
