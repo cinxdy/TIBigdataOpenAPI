@@ -5,7 +5,7 @@ from kubic_user import *
 from elasticsearch import Elasticsearch
 import esAccount as esAcc
 
-def makeRequest():
+def makeDocRequest():
 
     keyList = ['serviceKey','numOfCnt','rank','keyword','keyInTitle','keyInBody','writer','startDate','endDate','institution','category' ]
 
@@ -18,10 +18,10 @@ def makeRequest():
         resultCode = 400
         resultMSG = 'Bad Request: No serviceKey'
 
-    elif not 'keyword' in request.args and not 'keyInTitle' in request.args:
-        resultCode = 400
-        resultMSG = 'Bad Request: No keyInTitle'
-        return {}, resultCode, resultMSG
+    # elif not 'keyword' in request.args and not 'keyInTitle' in request.args:
+    #     resultCode = 400
+    #     resultMSG = 'Bad Request: No keyInTitle'
+    #     return {}, resultCode, resultMSG
 
     kubic_request = {
         'serviceKey': request.args.get('serviceKey') ,
@@ -42,13 +42,13 @@ def makeRequest():
     
     return kubic_request, resultCode, resultMSG
 
-def esSearch(request):
+def esDocSearch(request, idList):
     #Connect to DB
     ES = Elasticsearch([{'host': esAcc.host, 'port': esAcc.port}], http_auth=(esAcc.id, esAcc.password))
 
     # ES = Elasticsearch(host = '203.252.103.119', port=9200)
 
-    print(ES.cat.indices())
+    # print(ES.cat.indices())
 
     #search the document
 #     response = ES.search(index=index, body={    
@@ -60,23 +60,24 @@ def esSearch(request):
 #       }
 #     }
 #   })
-
     query = {
     "size": request['numOfCnt'],
     "query": {
         "bool": {
-            "must":[
-                {"wildcard": {"post_title": "*"+request['keyInTitle']+"*" }},
+            "must":[ {"wildcard": {"post_title": "*"+request['keyInTitle']+"*" }},
             ],
             # "sort": [{"post_date": {"order" : "desc" #오름차순: asc, 내림차순: desc 
             # }}]    
-            "filter": {"range": { "post_date": { "gte": request['startDate'], "lte": request['endDate'] }}}
-        },
+            "filter": [
+                # {"range": { "post_date": { "gte": request['startDate'], "lte": request['endDate'] }}},
+                {"terms": {"_id": idList}}, 
+            ],
+        }
     }
     }
 
     if not request['keyInBody'] == "":
-        query['query']['bool']['must'].append({"wildcard": {"post_body": "*"+request['keyInBody']+"*" }})
+        query['query']['bool']['must'].append({"wildcard": {"post_body": "*"+request['keyInBody']+"*" }})    
     if not request['writer'] == "":
         query['query']['bool']['must'].append({"wildcard": {"post_writer": "*"+request['writer']+"*" }})
     if not request['institution'] == "":
@@ -93,7 +94,7 @@ def raiseError(response, resultCode, resultMSG):
     response['header']['resultMSG'] = resultMSG
     return response
 
-def makeResponse(request, resultCode, resultMSG):
+def makeDocResponse(request, resultCode, resultMSG):
     response = {
             "header":{
                 "resultCode": resultCode,
@@ -115,7 +116,8 @@ def makeResponse(request, resultCode, resultMSG):
     if not limitTraffic(_id):
         return raiseError(response, 401,'Overused')
 
-    try: data = esSearch(request)
+    idList = getMyDocByEmail()
+    try: data = esDocSearch(request, idList)
     except Exception as e:
         print(e)
         return raiseError(response, 502,'Bad Gateway')

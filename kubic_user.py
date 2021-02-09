@@ -12,7 +12,7 @@ db = client.user
 trafficLimit = 3000
 
 def getEmail():
-    email_logined = "cindy@handong.edu"
+    email_logined = "21800409@handong.edu"
     return email_logined
 
 email_logined = getEmail()
@@ -97,3 +97,9 @@ def raiseTraffic(_id, numOfCnt):
     db.apiUser.update({"_id": ObjectId(_id)}, {'$set':post})
     doc = getDocById(_id)
     print(doc)
+
+def getMyDocByEmail():
+    doc = db.users.find_one({"email": email_logined})
+    print(doc)
+    print("myDoc:", doc['myDoc'])
+    return doc['myDoc']

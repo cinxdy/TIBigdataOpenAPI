@@ -31,4 +31,4 @@ response = ES.search(index=index, body={
     }
 })
 
-print(response)
+# print(response)

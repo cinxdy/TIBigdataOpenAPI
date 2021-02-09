@@ -5,6 +5,7 @@ from passlib.hash import pbkdf2_sha512
 import json
 from kubic_user import *
 from kubic_api import *
+from kubic_myDoc import *
 import logging
 
 app = Flask(__name__)
@@ -68,15 +69,29 @@ def management():
         return render_template('management.html', doc=getDocByEmail(), authKey = authKey)
     return render_template('management.html', doc=getDocByEmail())
 
-@app.route('/api')
-def api():
+@app.route('/search')
+def search():
     #get HTTP request and check validity
     request, resultCode, resultMSG = makeRequest()
     print("request:",request,'resultCode:',resultCode)
     
     response = makeResponse(request, resultCode, resultMSG)
-    print("response:", response['header']['resultCode'])
-    return json.dumps(response,ensure_ascii = False)
+    
+    print("responseCode:",response['header']['resultCode'])
+    print("response:", response['body'])
+    return json.dumps(response, ensure_ascii = False)
+
+@app.route('/mydoc')
+def mydoc():
+    #get HTTP request and check validity
+    request, resultCode, resultMSG = makeDocRequest()
+    print("request:", request, 'resultCode:', resultCode)
+    
+    response = makeDocResponse(request, resultCode, resultMSG)
+    
+    print("responseCode:",response['header']['resultCode'])
+    print("response:", response['body'])
+    return json.dumps(response, ensure_ascii = False)
 
 if __name__== "__main__":
     app.run(host='0.0.0.0', debug=True, port=15000)
