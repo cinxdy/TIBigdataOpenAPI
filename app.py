@@ -46,10 +46,9 @@ def index():
         return render_template('mainPage.html')
     else: abort(403)
 
-@app.route('/myInform')
-def myInform():
-    count = countAPI()
-    return render_template('myInform.html',email=email_logined,count=count)
+@app.route('/document')
+def document():
+    return render_template('document.html')
 
 @app.route('/register', methods=['GET','POST'])
 def register():
@@ -67,7 +66,7 @@ def management():
         # print("_id",_id)
         authKey = reissue(_id)
         return render_template('management.html', doc=getDocByEmail(), authKey = authKey)
-    return render_template('management.html', doc=getDocByEmail())
+    return render_template('management.html', email=email_logined, count =countAPI(), doc=getDocByEmail())
 
 @app.route('/search')
 def search():

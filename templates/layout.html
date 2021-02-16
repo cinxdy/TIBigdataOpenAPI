@@ -8,18 +8,26 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>KUBIC API Page</title>
+  <title>KUBIC Open API</title>
   
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
   <!-- Bootstrap core CSS -->
   <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- font -->
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300&display=swap');
 
-  <!-- font-->
-  <link href="static/css/font.css" rel = "stylesheet">
+  body{
+      font-family: 'Noto Serif KR', serif;
+  }
+  </style>
 
   <!-- Custom styles for this template -->
   <link href="static/css/simple-sidebar.css" rel="stylesheet">
+
+  <!-- font-->
+  <!-- <link href="static/css/font.css" rel="stylesheet"> -->
   
 </head>
 
@@ -29,10 +37,10 @@
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">My Page for API</div>
+      <div class="sidebar-heading">KUBIC Open API</div>
       <div class="list-group list-group-flush">
-        <a href="mainPage" class="list-group-item list-group-item-action bg-light">메인 페이지</a>
-        <a href="myInform" class="list-group-item list-group-item-action bg-light">내 정보 확인</a>
+        <a href="mainPage" class="list-group-item list-group-item-action bg-light">홈</a>
+        <a href="document" class="list-group-item list-group-item-action bg-light">참고 문서</a>
         <a href="register" class="list-group-item list-group-item-action bg-light">활용 신청</a>
         <a href="management" class="list-group-item list-group-item-action bg-light">활용 관리</a>
       </div>
