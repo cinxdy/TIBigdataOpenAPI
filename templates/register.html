@@ -4,16 +4,16 @@
     활용 신청
 </h1>
 <form method="POST" action="/register">
-    <div>
-        <label for="app_name"> 활용명 </label>
-        <input type="text" name="app_name">
+    <div class="form-group">
+        <label for="app_name" > 활용명 </label>
+        <input type="text" name="app_name" class="form-control" placeholder="활용명을 입력하세요">
     </div>
-    <div>
+    <div class="form-group">
         <label for="app_purpose"> 활용 목적 </label>
-        <input type="text" name="app_purpose">
-    </div>
+        <textarea type="text" name="app_purpose" class="form-control" rows="3" placeholder="활용 목적을 입력하세요"></textarea>
+        </div>
     <div class='button'>
-        <button type="submit">등록</button>
+        <button type="submit" class="btn btn-info">등록</button>
     </div>
 </form>
 <div>
