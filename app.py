@@ -65,7 +65,7 @@ def management():
         _id = request.form['reissue']
         # print("_id",_id)
         authKey = reissue(_id)
-        return render_template('management.html', doc=getDocByEmail(), authKey = authKey)
+        return render_template('management.html', email=email_logined, count =countAPI(), doc=getDocByEmail(), authKey = authKey)
     return render_template('management.html', email=email_logined, count =countAPI(), doc=getDocByEmail())
 
 @app.route('/search')
@@ -77,7 +77,7 @@ def search():
     response = makeResponse(request, resultCode, resultMSG)
     
     print("responseCode:",response['header']['resultCode'])
-    print("response:", response['body'])
+    # print("response:", response['body'])
     return json.dumps(response, ensure_ascii = False)
 
 @app.route('/mydoc')
@@ -89,8 +89,12 @@ def mydoc():
     response = makeDocResponse(request, resultCode, resultMSG)
     
     print("responseCode:",response['header']['resultCode'])
-    print("response:", response['body'])
+    # print("response:", response['body'])
     return json.dumps(response, ensure_ascii = False)
 
 if __name__== "__main__":
-    app.run(host='0.0.0.0', debug=True, port=15000)
+    from OpenSSL import SSL
+    context = SSL.Context(SSL.SSLv23_METHOD)
+    context.use_privatekey_file('/home/kubic/kubic/security/STAR.handong.edu.key')
+    context.use_certificate_file('/home/kubic/kubic/security/STAR.handong.edu.crt')
+    app.run(host='0.0.0.0', debug=True, port=15000, ssl_context=context)
