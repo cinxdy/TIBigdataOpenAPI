@@ -10,6 +10,7 @@ import logging
 
 app = Flask(__name__)
 app.secret_key = 'random string'
+
 # logging.basicConfig(filename='./logs/2021-01-27.log')
 key_saved =0 
 @app.route('/', methods=['GET','POST'])
@@ -77,7 +78,7 @@ def search():
     response = makeResponse(request, resultCode, resultMSG)
     
     print("responseCode:",response['header']['resultCode'])
-    print("response:", response['body'])
+    # print("response:", response['body'])
     return json.dumps(response, ensure_ascii = False)
 
 @app.route('/mydoc')
@@ -89,7 +90,7 @@ def mydoc():
     response = makeDocResponse(request, resultCode, resultMSG)
     
     print("responseCode:",response['header']['resultCode'])
-    print("response:", response['body'])
+    # print("response:", response['body'])
     return json.dumps(response, ensure_ascii = False)
 
 if __name__== "__main__":
