@@ -15,8 +15,12 @@ KUBIC Data API를 이용하기 위해서는 활용 신청, 인증, 호출의 세
 호출은 본격적으로 API에 요청 메세지를 보냄으로써 원하는 응답을 얻어오는 절차이다. 호출할 때에는 요청 URL(Request URL)과 요청 변수(Request Parameter)들를 전송 형식에 맞춰 보낸다. 정해진 형식에 맞추어 응답이 오면 응답을 Parsing하여 이용한다. 이 과정에서는 서비스 상세란에서 상세히 기술된 요청 변수, 응답 변수, 결과 코드를 읽고 적절히 활용하면 된다.
 
 # 서비스 상세
-1. 상세 검색
-## URL: http:/kubic.org/globalSearch?
+1. 전체 상세 검색
+## URL: https:/kubic.handong.edu/globalSearch?
+  
+2. 내 보관함 내 검색
+## URL: https://kubic.handong.edu/mydoc?
+  
 ## 요청 변수
 |변수명(영문)|변수명(국문)|필수 여부|형식|예시|Default값|
 |-----------|-----------|---------|----|---|--------|
@@ -34,7 +38,10 @@ KUBIC Data API를 이용하기 위해서는 활용 신청, 인증, 호출의 세
 ## 요청 예시  
 ```
 전체검색(globalSearch)에서 제목에 ‘북핵’, 내용에 ‘문재인’이 포함되고 2017년과 2020년 사이에 게시된 자료를 찾는 경우>
-http://kubic.org/globalSearch?serviceKey=BmBFV2vhwRaiT9&title=북핵&body=문재인&StartDate=20170101&EndDate=20210101
+http://kubic.handong.edu/globalSearch?serviceKey=BmBFV2vhwRaiT9&title=북핵&body=문재인&StartDate=2017-01-01&EndDate=2021-01-01
+
+내 보관함(mydoc)중 에서 제목에 ‘북핵’, 내용에 ‘문재인’이 포함되고 2017년과 2020년 사이에 게시된 자료를 찾는 경우>
+http://kubic.handong.edu/mydoc?serviceKey=BmBFV2vhwRaiT9&title=북핵&body=문재인&StartDate=2017-01-01&EndDate=2021-01-01
 ```
   
 ## 응답 변수  
@@ -75,7 +82,7 @@ http://kubic.org/globalSearch?serviceKey=BmBFV2vhwRaiT9&title=북핵&body=문재
                     "Title":"북핵에 관하여",
                     "Body":"문재인이 북핵에 관하여 연설했다.",
                     "Writer": "홍길동 기자",
-                    "Date":"20200917",
+                    "Date":"2020-09-17",
                     "Institution":"북한연구소 본사",
                     "InstitutionURL":"https://BukHan.co.kr",
                     "Category":"정치",
