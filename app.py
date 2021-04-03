@@ -6,7 +6,10 @@ import json
 from kubic_user import *
 from kubic_api import *
 from kubic_myDoc import *
+# from kubic_all import *
+import kubic_ssl
 import logging
+from OpenSSL import SSL
 
 app = Flask(__name__)
 app.secret_key = 'random string'
@@ -69,8 +72,8 @@ def management():
         return render_template('management.html', email=email_logined, count =countAPI(), doc=getDocByEmail(), authKey = authKey)
     return render_template('management.html', email=email_logined, count =countAPI(), doc=getDocByEmail())
 
-@app.route('/search')
-def search():
+@app.route('/all')
+def all():
     #get HTTP request and check validity
     request, resultCode, resultMSG = makeRequest()
     print("request:",request,'resultCode:',resultCode)
@@ -81,7 +84,31 @@ def search():
     # print("response:", response['body'])
     return json.dumps(response, ensure_ascii = False)
 
-@app.route('/mydoc')
+@app.route('/simple_search')
+def simplesearch():
+    print("simple_search>>>")
+    request, resultCode, resultMSG = makeRequest()
+    print("request:",request,'resultCode:',resultCode)
+    
+    response = makeResponse(request, resultCode, resultMSG)
+
+    print("responseCode:",response['header']['resultCode'])
+    return json.dumps(response, ensure_ascii = False)
+
+@app.route('/detailed_search')
+def detailed_search():
+    
+    #get HTTP request and check validity
+    request, resultCode, resultMSG = makeRequest()
+    print("request:",request,'resultCode:',resultCode)
+    
+    response = makeResponse(request, resultCode, resultMSG, 'detailed_search')
+    
+    print("responseCode:",response['header']['resultCode'])
+    # print("response:", response['body'])
+    return json.dumps(response, ensure_ascii = False)
+
+@app.route('/my_doc')
 def mydoc():
     #get HTTP request and check validity
     request, resultCode, resultMSG = makeDocRequest()
@@ -94,8 +121,5 @@ def mydoc():
     return json.dumps(response, ensure_ascii = False)
 
 if __name__== "__main__":
-    from OpenSSL import SSL
-    context = SSL.Context(SSL.SSLv23_METHOD)
-    context.use_privatekey_file('/home/kubic/kubic/security/STAR.handong.edu.key')
-    context.use_certificate_file('/home/kubic/kubic/security/STAR.handong.edu.crt')
+    context=(kubic_ssl.crt,kubic_ssl.key)
     app.run(host='0.0.0.0', debug=True, port=15000, ssl_context=context)
