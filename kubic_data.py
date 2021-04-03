@@ -1,5 +1,6 @@
 from elasticsearch import Elasticsearch
 import esAccount as esAcc
+from kubic_user import *
 
 def ESConnection():
     ES = Elasticsearch(
@@ -56,6 +57,8 @@ def detailed_search(request):
     return response
 
 def search_in_my_doc(request):
+    
+    idList = getMyDocByEmail()
     query = {
     "size": request['numOfCnt'],
     "query": {

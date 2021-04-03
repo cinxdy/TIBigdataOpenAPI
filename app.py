@@ -1,15 +1,13 @@
-from flask import Flask, jsonify, request, Response, render_template, abort, session, redirect, url_for
-from flask_restful import Resource, Api
-from secrets import token_urlsafe
-from passlib.hash import pbkdf2_sha512
+from flask import Flask, render_template, abort, session, redirect, url_for
+# from flask_restful import Resource, Api
+# from secrets import token_urlsafe
+# from passlib.hash import pbkdf2_sha512
 import json
 from kubic_user import *
 from kubic_api import *
-from kubic_myDoc import *
 # from kubic_all import *
 import kubic_ssl
 import logging
-from OpenSSL import SSL
 from kubic_class_test import kubic_api
 
 app = Flask(__name__)
@@ -73,58 +71,58 @@ def management():
         return render_template('management.html', email=email_logined, count =countAPI(), doc=getDocByEmail(), authKey = authKey)
     return render_template('management.html', email=email_logined, count =countAPI(), doc=getDocByEmail())
 
-@app.route('/test')
-def test():
-    kubic = kubic_api('simple_search')
+@app.route('/<search_name>')
+def test(search_name):
+    kubic = kubic_api(search_name)
     return json.dumps(kubic.response, ensure_ascii = False)
 
-@app.route('/all')
-def all():
-    #get HTTP request and check validity
-    request, resultCode, resultMSG = makeRequest()
-    print("request:",request,'resultCode:',resultCode)
+# @app.route('/all')
+# def all():
+#     #get HTTP request and check validity
+#     request, resultCode, resultMSG = makeRequest()
+#     print("request:",request,'resultCode:',resultCode)
     
-    response = makeResponse(request, resultCode, resultMSG)
+#     response = makeResponse(request, resultCode, resultMSG)
     
-    print("responseCode:",response['header']['resultCode'])
-    # print("response:", response['body'])
-    return json.dumps(response, ensure_ascii = False)
+#     print("responseCode:",response['header']['resultCode'])
+#     # print("response:", response['body'])
+#     return json.dumps(response, ensure_ascii = False)
 
-@app.route('/simple_search')
-def simplesearch():
-    print("simple_search>>>")
-    request, resultCode, resultMSG = makeRequest()
-    print("request:",request,'resultCode:',resultCode)
+# @app.route('/simple_search')
+# def simplesearch():
+#     print("simple_search>>>")
+#     request, resultCode, resultMSG = makeRequest()
+#     print("request:",request,'resultCode:',resultCode)
     
-    response = makeResponse(request, resultCode, resultMSG)
+#     response = makeResponse(request, resultCode, resultMSG)
 
-    print("responseCode:",response['header']['resultCode'])
-    return json.dumps(response, ensure_ascii = False)
+#     print("responseCode:",response['header']['resultCode'])
+#     return json.dumps(response, ensure_ascii = False)
 
-@app.route('/detailed_search')
-def detailed_search():
+# @app.route('/detailed_search')
+# def detailed_search():
     
-    #get HTTP request and check validity
-    request, resultCode, resultMSG = makeRequest()
-    print("request:",request,'resultCode:',resultCode)
+#     #get HTTP request and check validity
+#     request, resultCode, resultMSG = makeRequest()
+#     print("request:",request,'resultCode:',resultCode)
     
-    response = makeResponse(request, resultCode, resultMSG, 'detailed_search')
+#     response = makeResponse(request, resultCode, resultMSG, 'detailed_search')
     
-    print("responseCode:",response['header']['resultCode'])
-    # print("response:", response['body'])
-    return json.dumps(response, ensure_ascii = False)
+#     print("responseCode:",response['header']['resultCode'])
+#     # print("response:", response['body'])
+#     return json.dumps(response, ensure_ascii = False)
 
-@app.route('/my_doc')
-def mydoc():
-    #get HTTP request and check validity
-    request, resultCode, resultMSG = makeDocRequest()
-    print("request:", request, 'resultCode:', resultCode)
+# @app.route('/my_doc')
+# def mydoc():
+#     #get HTTP request and check validity
+#     request, resultCode, resultMSG = makeDocRequest()
+#     print("request:", request, 'resultCode:', resultCode)
     
-    response = makeDocResponse(request, resultCode, resultMSG)
+#     response = makeDocResponse(request, resultCode, resultMSG)
     
-    print("responseCode:",response['header']['resultCode'])
-    # print("response:", response['body'])
-    return json.dumps(response, ensure_ascii = False)
+#     print("responseCode:",response['header']['resultCode'])
+#     # print("response:", response['body'])
+#     return json.dumps(response, ensure_ascii = False)
 
 if __name__== "__main__":
     context=(kubic_ssl.crt,kubic_ssl.key)
