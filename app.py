@@ -10,6 +10,7 @@ from kubic_myDoc import *
 import kubic_ssl
 import logging
 from OpenSSL import SSL
+from kubic_class_test import kubic_api
 
 app = Flask(__name__)
 app.secret_key = 'random string'
@@ -71,6 +72,11 @@ def management():
         authKey = reissue(_id)
         return render_template('management.html', email=email_logined, count =countAPI(), doc=getDocByEmail(), authKey = authKey)
     return render_template('management.html', email=email_logined, count =countAPI(), doc=getDocByEmail())
+
+@app.route('/test')
+def test():
+    kubic = kubic_api('simple_search')
+    return json.dumps(kubic.response, ensure_ascii = False)
 
 @app.route('/all')
 def all():

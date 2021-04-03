@@ -2,7 +2,7 @@ from flask import request
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from kubic_user import *
-from kubic_function import *
+from kubic_data import *
 
 ES, index = ESConnection()
 
