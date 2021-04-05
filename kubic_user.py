@@ -99,7 +99,7 @@ def raiseTraffic(_id, numOfCnt):
     print(doc)
 
 def getMyDocByEmail():
-    doc = db.users.find_one({"email": email_logined})
-    print(doc)
-    print("myDoc:", doc['myDoc'])
-    return doc['myDoc']
+    doc = db.mydocs.find_one({"userEmail": email_logined})
+    print(doc) 
+    print("myDoc:", doc['savedDocIds'])
+    return doc['savedDocIds']

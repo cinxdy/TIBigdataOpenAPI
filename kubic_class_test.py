@@ -7,10 +7,8 @@ class kubic_api:
         self.searchType = searchType
         self.resultCode = 200
 
-        rs = self.setRequest()
-        if rs != 200:
-            self.response = rs
-        else: 
+        self.response = self.setRequest()
+        if self.response == 200:
             self.response = self.setResponse()
     
     def raiseError(self, resultCode, resultMSG):
@@ -38,8 +36,8 @@ class kubic_api:
         if not 'serviceKey' in request.args:
             return self.raiseError(400,'Bad Request: No serviceKey')
 
-        elif not 'keyword' in request.args and not 'keyInTitle' in request.args:
-            return self.raiseError(400,'Bad Request: No keyInTitle')
+        # elif not 'keyword' in request.args and not 'keyInTitle' in request.args:
+        #     return self.raiseError(400,'Bad Request: No keyInTitle')
         
         if self.searchType == 'simple_search':
             self.request = {                    
