@@ -27,6 +27,8 @@ class kubic_api:
             keyList = ['serviceKey', 'numOfCnt', 'rank','keyword']
         elif self.searchType == 'detailed_search' or self.searchType == 'my_doc':
             keyList = ['serviceKey','numOfCnt','rank','keyword','keyInTitle','keyInBody','writer','startDate','endDate','institution','category' ]
+        elif self.searchType == 'retrieve_all':
+            keyList = ['serviceKey','numOfCnt','page']
         else: return self.raiseError(502,'Bad Gateway')
 
         for k in request.args.keys():
@@ -46,10 +48,16 @@ class kubic_api:
                 'rank': request.args.get('rank', 1),
                 'keyword': request.args.get('keyword')
             }
+        elif self.searchType == 'retrieve_all':
+                self.request = {                    
+                'serviceKey': request.args.get('serviceKey') ,
+                'numOfCnt': int(request.args.get('numOfCnt', 100)),
+                'page': int(request.args.get('page', 1))
+            }
         else:
             self.request = {
                 'serviceKey': request.args.get('serviceKey') ,
-                'numOfCnt': request.args.get('numOfCnt', 100),
+                'numOfCnt': int(request.args.get('numOfCnt', 100)),
                 'rank': request.args.get('rank', 1),
                 'keyInTitle': request.args.get('keyInTitle',""),
                 'keyInBody': request.args.get('keyInBody',""),
@@ -92,10 +100,12 @@ class kubic_api:
                 return content['_source']['post_body']
 
         self.response = self.raiseError(200, 'OK')
-        self.response['body'] = {
+        if self.searchType == 'retrieve_all':
+            self.response['body'] = {
                     "numOfCnt": self.request['numOfCnt'],
                     "totalCnt": data['hits']['total']['value'],
-                    "rank" : self.request['rank'],
+                    "page": self.request['page'],
+                    # "rank" : self.request['rank'],
                     "contents":[{
                         "title": content['_source']['post_title'],
                         "body": 
@@ -111,6 +121,26 @@ class kubic_api:
                         #content['_source']['file_download_url'],
                     }for content in data['hits']['hits']]
                     }
+        else:
+            self.response['body'] = {
+                        "numOfCnt": self.request['numOfCnt'],
+                        "totalCnt": data['hits']['total']['value'],
+                        "rank" : self.request['rank'],
+                        "contents":[{
+                            "title": content['_source']['post_title'],
+                            "body": 
+                            # content['_source']['post_body'],
+                            slicingBody(content) if 'post_body' in content['_source'].keys() else None,
+                            "writer": content['_source']['post_writer'],
+                            "date": content['_source']['post_date'] if 'post_date' in content['_source'] else None,
+                            "institution": content['_source']['published_institution'],
+                            "institutionURL": content['_source']['published_institution_url'],
+                            "category": content['_source']['top_category'],
+                            "fileURL": content['_source']['file_download_url'] if 'file_download_url' in content['_source'].keys() else None,
+                            "fileName": content['_source']['file_name'] if 'file_name' in content['_source'].keys() else None,
+                            #content['_source']['file_download_url'],
+                        }for content in data['hits']['hits']]
+                        }
         
         raiseTraffic(_id, self.request['numOfCnt'] if self.request['numOfCnt'] < data['hits']['total']['value'] else data['hits']['total']['value'])
         return self.response

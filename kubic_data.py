@@ -57,7 +57,6 @@ def detailed_search(request):
     return response
 
 def search_in_my_doc(request):
-    
     idList = getMyDocByEmail()
     query = {
     "size": request['numOfCnt'],
@@ -87,9 +86,17 @@ def search_in_my_doc(request):
     # print("response:",str(response)[:30])
     return response
 
+def retrieve_all(request):
+    query = {
+    "from" : request['page'] * request['numOfCnt'] +1,
+    "size": int(request['numOfCnt']),
+    }
+    response = ES.search(index=esAcc.index, body=query)
+    return response
+
 def esSearch(searchType, request):
     if searchType=='simple_search': return simple_search(request)
     elif searchType=='detailed_search': return detailed_search(request)
     elif searchType=='my_doc': return search_in_my_doc(request)
+    elif searchType == 'retrieve_all': return retrieve_all(request)
     else: return None
-    

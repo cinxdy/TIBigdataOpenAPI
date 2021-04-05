@@ -2,7 +2,6 @@ import esAccount as esAcc
 from elasticsearch import Elasticsearch
 from ssl import create_default_context
 
-context = create_default_context(cafile="STAR.handong.edu.pem")
 ES = Elasticsearch(
     [esAcc.host],
     http_auth=(esAcc.id, esAcc.password),
@@ -12,6 +11,7 @@ ES = Elasticsearch(
 )
 
 print(ES.info())
+print(ES.cat.indices())
 
 index = 'monstache_index'
 # ES = Elasticsearch(host = host, port=9200)
