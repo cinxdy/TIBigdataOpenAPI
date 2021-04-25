@@ -73,6 +73,7 @@ def management():
 
 @app.route('/<search_name>')
 def test(search_name):
+    
     kubic = kubic_api(search_name)
     return json.dumps(kubic.response, ensure_ascii = False)
 

@@ -88,8 +88,8 @@ def search_in_my_doc(request):
 
 def retrieve_all(request):
     query = {
-    "from" : request['page'] * request['numOfCnt'] +1,
-    "size": int(request['numOfCnt']),
+        "from" : request['page'] * request['numOfCnt'] +1,
+        "size": int(request['numOfCnt']),
     }
     response = ES.search(index=esAcc.index, body=query)
     return response
