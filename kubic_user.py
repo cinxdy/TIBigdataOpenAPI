@@ -80,7 +80,7 @@ def verification(serviceKey):
     return False
 
 def limitTraffic(_id):
-    if(_id=='606a98e2d7f9d800f11f17bc'): return True
+    if(ObjectId(_id)==ObjectId('606a98e2d7f9d800f11f17bc')): return True
     doc = getDocById(_id)
     if doc['traffic'] > trafficLimit:
         return False

@@ -90,14 +90,15 @@ class kubic_api:
         if data['hits']['total']['value']==0:
             return self.raiseError(204,'No Content')
 
-        def slicingBody(content):
+        def slicing400(content):
             try:
-                post_body = ' '.join(content['_source']['post_body'].split())
-                if len(post_body) > 200:
-                    post_body = post_body[:200]
-                return post_body
+                content_split = ' '.join(content.split())
+                if len(content_split) > 400:
+                    content_split = content_split[:400]
+                return content_split
             except:
-                return content['_source']['post_body']
+                return content
+    
 
         self.response = self.raiseError(200, 'OK')
         if self.searchType == 'retrieve_all':
@@ -108,17 +109,16 @@ class kubic_api:
                     # "rank" : self.request['rank'],
                     "contents":[{
                         "title": content['_source']['post_title'],
-                        "body": 
-                        # content['_source']['post_body'],
-                        slicingBody(content) if 'post_body' in content['_source'].keys() else None,
-                        "writer": content['_source']['post_writer'],
+                        "body": slicing400(content['_source']['post_body'])  if 'post_body' in content['_source'].keys() else None,
+                        "writer": content['_source']['post_writer'] if 'post_writer' in content['_source'].keys() else None,
                         "date": content['_source']['post_date'] if 'post_date' in content['_source'] else None,
-                        "institution": content['_source']['published_institution'],
-                        "institutionURL": content['_source']['published_institution_url'],
-                        "category": content['_source']['top_category'],
+                        "institution": content['_source']['published_institution'] if 'published_institution' in content['_source'].keys() else None,
+                        "institutionURL": content['_source']['published_institution_url'] if 'published_institution_url' in content['_source'].keys() else None,
+                        # "category": content['_source']['top_category'],
                         "fileURL": content['_source']['file_download_url'] if 'file_download_url' in content['_source'].keys() else None,
                         "fileName": content['_source']['file_name'] if 'file_name' in content['_source'].keys() else None,
                         #content['_source']['file_download_url'],
+                        "fileContent": slicing400(content['_source']['file_extracted_content']) if 'file_extracted_content' in content['_source'].keys() else None
                     }for content in data['hits']['hits']]
                     }
         else:
@@ -130,7 +130,7 @@ class kubic_api:
                             "title": content['_source']['post_title'],
                             "body": 
                             # content['_source']['post_body'],
-                            slicingBody(content) if 'post_body' in content['_source'].keys() else None,
+                            slicing400(content['_source']['post_body']) if 'post_body' in content['_source'].keys() else None,
                             "writer": content['_source']['post_writer'],
                             "date": content['_source']['post_date'] if 'post_date' in content['_source'] else None,
                             "institution": content['_source']['published_institution'],
