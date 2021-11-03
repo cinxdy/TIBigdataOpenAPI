@@ -1,4 +1,5 @@
-from flask import Flask, render_template, abort, session, redirect, url_for
+from flask import Flask, render_template, abort, session, redirect, url_for, request
+from flask_cors import CORS
 # from flask_restful import Resource, Api
 # from secrets import token_urlsafe
 # from passlib.hash import pbkdf2_sha512
@@ -10,11 +11,22 @@ import kubic_ssl
 import logging
 from kubic_class_test import kubic_api
 
+from time import time
+
 app = Flask(__name__)
 app.secret_key = 'random string'
+CORS(app)
 
 # logging.basicConfig(filename='./logs/2021-01-27.log')
 key_saved =0 
+
+@app.after_request
+def after_request(response):
+  response.headers.add('Access-Control-Allow-Origin', '*')
+  response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+  response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+  return response
+
 @app.route('/', methods=['GET','POST'])
 @app.route('/mainPage', methods=['GET','POST'])
 def index():
@@ -49,32 +61,58 @@ def index():
         return render_template('mainPage.html')
     else: abort(403)
 
-@app.route('/document')
-def document():
-    return render_template('document.html')
+# @app.route('/document')
+# def document():
+#     return render_template('document.html')
 
 @app.route('/register', methods=['GET','POST'])
 def register():
+    # if request.remote_addr != '127.0.0.1':
+    #     abort(403)
     if request.method == 'POST':
         app_name = request.form['app_name']
         app_purpose = request.form['app_purpose']
         authKey = registerAPI(app_name,app_purpose)
-        return render_template('register.html',app_name=app_name,app_purpose=app_purpose, authKey = authKey)
+        return {'authKey':authKey}
+        # return render_template('register.html',app_name=app_name,app_purpose=app_purpose, authKey = authKey)
     return render_template('register.html')
 
-@app.route('/management', methods=['GET','POST'])
-def management():
-    if request.method == 'POST' and 'reissue' in request.form :
-        _id = request.form['reissue']
-        # print("_id",_id)
-        authKey = reissue(_id)
-        return render_template('management.html', email=email_logined, count =countAPI(), doc=getDocByEmail(), authKey = authKey)
-    return render_template('management.html', email=email_logined, count =countAPI(), doc=getDocByEmail())
+@app.route('/reissue', methods=['POST'])
+def reissues():
+    _id = request.form['_id']
+    authKey = reissue(_id)
+    
+    return {'authKey':authKey}
+
+@app.route('/delete', methods=['POST'])
+def deleteAPIs():
+    _id = request.form['_id']
+    succeed = deleteAPI(_id)
+    
+    return {'succeed':succeed}
+
+# @app.route('/management', methods=['GET','POST'])
+# def management():
+#     # if request.remote_addr != '127.0.0.1':
+#     #     abort(403)
+#     if request.method == 'POST' and 'reissue' in request.form :
+#         _id = request.form['reissue']
+#         # print("_id",_id)
+#         authKey = reissue(_id)
+        
+#         # return {authKey:authKey}
+#         return render_template('management.html', email=email_logined, count =countAPI(), doc=getDocByEmail(), authKey = authKey)
+#     return render_template('management.html', email=email_logined, count =countAPI(), doc=getDocByEmail())
 
 @app.route('/<search_name>')
 def test(search_name):
-    
+    start = time()
+
     kubic = kubic_api(search_name)
+    print("Ip:", request.remote_addr)
+    # print("Date:", request.date) # None으로 뜸
+    # print("Request:", request.args)
+    print("Execution Time:", time() - start)
     return json.dumps(kubic.response, ensure_ascii = False)
 
 # @app.route('/all')

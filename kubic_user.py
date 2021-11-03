@@ -58,6 +58,11 @@ def reissue(_id):
     print("reissue> app_name", post['app_name'],"key", key)
     return key
 
+def deleteAPI(_id):
+    try: db.apiUser.remove({"_id": ObjectId(_id)})
+    except: return False
+    return True
+
 def getDocByEmail():
     docList = db.apiUser.find({"user_email": email_logined})
     return docList

@@ -13,7 +13,7 @@ ES = Elasticsearch(
 )
 
 # print(ES.info())
-# print(ES.cat.indices())
+print(ES.cat.indices())
 
 index = 'monstache_index'
 request= {}
@@ -31,7 +31,7 @@ if request['page'] < 100:
     response = ES.search(index=esAcc.index, body=query)
 else:
     request['page']
-print(response['hits']['hits'])
+# print(response['hits']['hits'])
 
 
 # print(response)
