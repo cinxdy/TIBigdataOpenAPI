@@ -131,7 +131,7 @@ class kubic_api:
                             "body": 
                             # content['_source']['post_body'],
                             slicing400(content['_source']['post_body']) if 'post_body' in content['_source'].keys() else None,
-                            "writer": content['_source']['post_writer'],
+                            "writer": content['_source']['post_writer'] if 'post_writer' in content['_source'] else None,
                             "date": content['_source']['post_date'] if 'post_date' in content['_source'] else None,
                             "institution": content['_source']['published_institution'],
                             "institutionURL": content['_source']['published_institution_url'],

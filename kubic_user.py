@@ -74,17 +74,23 @@ def getDocById(_id):
     doc = db.apiUser.find_one({"_id": ObjectId(_id)})
     return doc
 
-def findHash():
-    doc = getDocByEmail()
-    hashKeyList = [item['veri_code'] for item in doc]
-    return hashKeyList
+# def findHash():
+#     doc = getDocByEmail()
+#     hashKeyList = [item['veri_code'] for item in doc]
+#     return hashKeyList
 
 def verification(serviceKey):
-    hashKeyList = findHash()
-    for hashKey in hashKeyList:
-        if(pbkdf2_sha512.verify(serviceKey, hashKey)):
+    docList = db.apiUser.find({},{"veri_code":1})
+    # print(hashKeyList)
+    for doc in docList:
+        if(pbkdf2_sha512.verify(serviceKey, doc['veri_code'])):
             doc = db.apiUser.find_one({"veri_code": hashKey})
-            return doc['_id']
+            # return doc['_id']
+    # hashKeyList = findHash()
+    # for hashKey in hashKeyList:
+    #     if(pbkdf2_sha512.verify(serviceKey, hashKey)):
+    #         doc = db.apiUser.find_one({"veri_code": hashKey})
+    #         return doc['_id']
     return False
 
 def limitTraffic(_id):

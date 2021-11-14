@@ -92,7 +92,7 @@ def register():
 
 @app.route('/reissue', methods=['POST'])
 def reissues():
-    session['id'] = request.form['email']
+    # session['id'] = request.form['email']
     _id = request.form['_id']
     authKey = reissue(_id)
     return {'authKey':authKey}
