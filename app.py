@@ -20,6 +20,16 @@ CORS(app)
 # logging.basicConfig(filename='./logs/2021-01-27.log')
 key_saved =0 
 
+# @app.before_request
+# def before_request(request):
+    # id = request.form['email']
+    # ip = request.remote_addr
+    # key = token_urlsafe(8)
+
+    # session['id'] = id
+    # session['ip'] = ip
+    # session['key'] = key
+
 @app.after_request
 def after_request(response):
   response.headers.add('Access-Control-Allow-Origin', '*')
@@ -28,38 +38,38 @@ def after_request(response):
   return response
 
 @app.route('/', methods=['GET','POST'])
-@app.route('/mainPage', methods=['GET','POST'])
-def index():
-    global key_saved
-    if request.method == 'POST':
-        id = request.get_json().get('email')
-        ip = request.remote_addr
-        key = token_urlsafe(8)
+# @app.route('/mainPage', methods=['GET','POST'])
+# def index():
+#     global key_saved
+#     if request.method == 'POST':
+#         id = request.get_json().get('email')
+#         ip = request.remote_addr
+#         key = token_urlsafe(8)
 
-        session['id'] = id
-        session['ip'] = ip
-        session['key'] = key
+#         session['id'] = id
+#         session['ip'] = ip
+#         session['key'] = key
 
-        print("ID:", id)
-        print("IP:", ip)
-        print("key:", key)
+#         print("ID:", id)
+#         print("IP:", ip)
+#         print("key:", key)
 
-        return key, 200
+#         return key, 200
 
-    if request.method == 'GET':
-        ip = request.remote_addr
-        key = request.args.get("K",'')
+#     if request.method == 'GET':
+#         ip = request.remote_addr
+#         key = request.args.get("K",'')
 
-        if 'id' in session:
-            print("ID:", session['id'])
-        print("IP:", ip)
-        print("key:", key)        
+#         if 'id' in session:
+#             print("ID:", session['id'])
+#         print("IP:", ip)
+#         print("key:", key)        
         
-        # if session['key'] == key:   
-            # print("Success!")
-            # session['veri'] = True
-        return render_template('mainPage.html')
-    else: abort(403)
+#         # if session['key'] == key:   
+#             # print("Success!")
+#             # session['veri'] = True
+#         return render_template('mainPage.html')
+#     else: abort(403)
 
 # @app.route('/document')
 # def document():
@@ -70,6 +80,7 @@ def register():
     # if request.remote_addr != '127.0.0.1':
     #     abort(403)
     if request.method == 'POST':
+        session['id'] = request.form['email']
         app_name = request.form['app_name']
         app_purpose = request.form['app_purpose']
         authKey = registerAPI(app_name,app_purpose)
@@ -77,19 +88,24 @@ def register():
         # return render_template('register.html',app_name=app_name,app_purpose=app_purpose, authKey = authKey)
     return render_template('register.html')
 
+
+
 @app.route('/reissue', methods=['POST'])
 def reissues():
+    session['id'] = request.form['email']
     _id = request.form['_id']
     authKey = reissue(_id)
-    
     return {'authKey':authKey}
+
+
 
 @app.route('/delete', methods=['POST'])
 def deleteAPIs():
     _id = request.form['_id']
-    succeed = deleteAPI(_id)
-    
+    succeed = deleteAPI(_id)    
     return {'succeed':succeed}
+
+
 
 # @app.route('/management', methods=['GET','POST'])
 # def management():

@@ -1,4 +1,4 @@
-
+from flask import session
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from secrets import token_urlsafe 
@@ -11,14 +11,17 @@ client = MongoClient('localhost',27017)
 db = client.user
 trafficLimit = 3000
 
-def getEmail():
-    email_logined = "21800409@handong.edu"
-    return email_logined
+# def getEmail():
+    # email_logined = "21800409@handong.edu"
+    
+    # email_logined = session['id']
+    # return email_logined
+    # return session['id']
 
-email_logined = getEmail()
+# email_logined = getEmail()
 
 def countAPI():
-    count = db.apiUser.count({"user_email": email_logined})
+    count = db.apiUser.count({"user_email": session['id']})
     return count
 
 def generateCode():
@@ -33,7 +36,7 @@ def registerAPI(app_name, app_purpose):
     post = {
         "app_name" : app_name,
         "app_purpose" : app_purpose,
-        "user_email" : email_logined,
+        "user_email" : session['id'],
         "veri_code" : hashKey,
         "reporting_date" : today,
         "expiration_date" : (today+relativedelta(years=1)),
@@ -64,7 +67,7 @@ def deleteAPI(_id):
     return True
 
 def getDocByEmail():
-    docList = db.apiUser.find({"user_email": email_logined})
+    docList = db.apiUser.find({"user_email": session['id']})
     return docList
 
 def getDocById(_id):
@@ -105,7 +108,7 @@ def raiseTraffic(_id, numOfCnt):
     print(doc)
 
 def getMyDocByEmail():
-    doc = db.mydocs.find_one({"userEmail": email_logined})
+    doc = db.mydocs.find_one({"userEmail": session['id']})
     print(doc) 
     print("myDoc:", doc['savedDocIds'])
     return doc['savedDocIds']
