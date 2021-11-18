@@ -9,7 +9,7 @@ from kubic_api import *
 # from kubic_all import *
 import kubic_ssl
 import logging
-from kubic_class_test import kubic_api
+from kubic_class import kubic_api
 
 from time import time
 
@@ -91,8 +91,8 @@ def register():
 
 
 @app.route('/reissue', methods=['POST'])
-def reissues():
-    # session['id'] = request.form['email']
+def reissue():
+    session['id'] = request.form['email']
     _id = request.form['_id']
     authKey = reissue(_id)
     return {'authKey':authKey}
@@ -105,6 +105,17 @@ def deleteAPIs():
     succeed = deleteAPI(_id)    
     return {'succeed':succeed}
 
+
+@app.route('/<search_name>')
+def api(search_name):
+    start = time()
+
+    kubic = kubic_api(search_name)
+    print("Ip:", request.remote_addr)
+    # print("Date:", request.date) # None으로 뜸
+    # print("Request:", request.args)
+    print("Execution Time:", time() - start)
+    return json.dumps(kubic.response, ensure_ascii = False)
 
 
 # @app.route('/management', methods=['GET','POST'])
@@ -120,16 +131,6 @@ def deleteAPIs():
 #         return render_template('management.html', email=email_logined, count =countAPI(), doc=getDocByEmail(), authKey = authKey)
 #     return render_template('management.html', email=email_logined, count =countAPI(), doc=getDocByEmail())
 
-@app.route('/<search_name>')
-def test(search_name):
-    start = time()
-
-    kubic = kubic_api(search_name)
-    print("Ip:", request.remote_addr)
-    # print("Date:", request.date) # None으로 뜸
-    # print("Request:", request.args)
-    print("Execution Time:", time() - start)
-    return json.dumps(kubic.response, ensure_ascii = False)
 
 # @app.route('/all')
 # def all():
