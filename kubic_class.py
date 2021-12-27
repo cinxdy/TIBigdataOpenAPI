@@ -44,8 +44,8 @@ class kubic_api:
         if self.searchType == 'simple_search':
             self.request = {                    
                 'serviceKey': request.args.get('serviceKey') ,
-                'numOfCnt': request.args.get('numOfCnt', 100),
-                'rank': request.args.get('rank', 1),
+                'numOfCnt': int(request.args.get('numOfCnt', 100)),
+                'rank': int(request.args.get('rank', 1)),
                 'keyword': request.args.get('keyword')
             }
         elif self.searchType == 'retrieve_all':
@@ -58,7 +58,7 @@ class kubic_api:
             self.request = {
                 'serviceKey': request.args.get('serviceKey') ,
                 'numOfCnt': int(request.args.get('numOfCnt', 100)),
-                'rank': request.args.get('rank', 1),
+                'rank': int(request.args.get('rank', 1)),
                 'keyInTitle': request.args.get('keyInTitle',""),
                 'keyInBody': request.args.get('keyInBody',""),
                 'writer': request.args.get('writer',""),

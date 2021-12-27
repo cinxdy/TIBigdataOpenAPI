@@ -38,7 +38,9 @@ def after_request(response):
   return response
 
 @app.route('/', methods=['GET','POST'])
-# @app.route('/mainPage', methods=['GET','POST'])
+@app.route('/mainPage', methods=['GET','POST'])
+def home():
+    return "Server is running normally"
 # def index():
 #     global key_saved
 #     if request.method == 'POST':
@@ -75,7 +77,8 @@ def after_request(response):
 # def document():
 #     return render_template('document.html')
 
-@app.route('/register', methods=['GET','POST'])
+# @app.route('/register', methods=['GET','POST'])
+@app.route('/register', methods=['POST'])
 def register():
     # if request.remote_addr != '127.0.0.1':
     #     abort(403)
@@ -86,7 +89,7 @@ def register():
         authKey = registerAPI(app_name,app_purpose)
         return {'authKey':authKey}
         # return render_template('register.html',app_name=app_name,app_purpose=app_purpose, authKey = authKey)
-    return render_template('register.html')
+    return redirect(home)
 
 
 

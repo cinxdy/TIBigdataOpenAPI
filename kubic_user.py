@@ -51,7 +51,7 @@ def reissue(_id):
     key, hashKey = generateCode()
 
     post = {
-        "app_name" : "testtesttest",
+        # "app_name" : "testtesttest",
         "veri_code" : hashKey,
         "reporting_date" : today,
         "expiration_date" : (today+relativedelta(years=1)),
@@ -82,10 +82,11 @@ def getDocById(_id):
 def verification(serviceKey):
     docList = db.apiUser.find({},{"veri_code":1})
     # print(hashKeyList)
+    # hashKey=pbkdf2_sha512.hash(serviceKey)
     for doc in docList:
         if(pbkdf2_sha512.verify(serviceKey, doc['veri_code'])):
-            doc = db.apiUser.find_one({"veri_code": hashKey})
-            # return doc['_id']
+            # doc = db.apiUser.find_one({"veri_code": hashKey})
+            return doc['_id']
     # hashKeyList = findHash()
     # for hashKey in hashKeyList:
     #     if(pbkdf2_sha512.verify(serviceKey, hashKey)):
@@ -94,7 +95,7 @@ def verification(serviceKey):
     return False
 
 def limitTraffic(_id):
-    if(ObjectId(_id)==ObjectId('606a98e2d7f9d800f11f17bc')): return True
+    # if(ObjectId(_id)==ObjectId('606a98e2d7f9d800f11f17bc')): return True
     doc = getDocById(_id)
     if doc['traffic'] > trafficLimit:
         return False
