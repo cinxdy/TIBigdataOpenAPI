@@ -6,6 +6,7 @@ from flask_cors import CORS
 import json
 from kubic_user import *
 from kubic_api import *
+from kubic_email import *
 # from kubic_all import *
 import kubic_ssl
 import logging
@@ -84,14 +85,30 @@ def register():
     #     abort(403)
     if request.method == 'POST':
         session['id'] = request.form['email']
+        app_type = request.form['app_type']
         app_name = request.form['app_name']
         app_purpose = request.form['app_purpose']
-        authKey = registerAPI(app_name,app_purpose)
-        return {'authKey':authKey}
+
+        if app_type=='public':
+            authKey = registerAPI('public',app_name,app_purpose)
+            return {'authKey':authKey}
+        elif app_type=='private':
+            send_veri_email(session['id'], app_name,app_purpose)
+            return {'authKey': 'success'}
+        return {'authKey': 'fail'}
         # return render_template('register.html',app_name=app_name,app_purpose=app_purpose, authKey = authKey)
     return redirect(home)
 
+@app.route('/registerManual', methods=['GET'])
+def registerManual():
+    session['id'] = request.args.get('email')
+    # app_type = request.form['app_type']
+    app_name = request.args.get('app_name')
+    app_purpose = request.args.get('app_purpose')
 
+    authKey = registerAPI('private', app_name,app_purpose)
+    send_info_email(session['id'], app_name,app_purpose, authKey)
+    return '정상 승인되었습니다.'
 
 @app.route('/reissue', methods=['POST'])
 def reissue():
@@ -99,8 +116,6 @@ def reissue():
     _id = request.form['_id']
     authKey = reissue(_id)
     return {'authKey':authKey}
-
-
 
 @app.route('/delete', methods=['POST'])
 def deleteAPIs():

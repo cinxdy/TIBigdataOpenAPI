@@ -29,11 +29,12 @@ def generateCode():
     hashKey = pbkdf2_sha512.hash(key)
     return key, hashKey
 
-def registerAPI(app_name, app_purpose):
+def registerAPI(app_type, app_name, app_purpose):
     today = datetime.today()
     key, hashKey = generateCode()
 
     post = {
+        "app_type": app_type,
         "app_name" : app_name,
         "app_purpose" : app_purpose,
         "user_email" : session['id'],
