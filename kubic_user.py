@@ -47,6 +47,46 @@ def registerAPI(app_type, app_name, app_purpose):
     db.apiUser.insert_one(post)
     return key
 
+def preRegisterAPI(email, app_name, app_purpose):
+    today = datetime.today()
+    # key, hashKey = generateCode()
+    key = token_urlsafe(16)
+    post = {
+        # "app_type": app_type,
+        "app_name" : app_name,
+        "app_purpose" : app_purpose,
+        "email" : email,
+        "key_id" : key,
+        "reporting_date" : today,
+        # "expiration_date" : (today+relativedelta(years=1)),
+        # "traffic":0
+    }
+
+    db.preApiUser.insert_one(post)
+    return key  
+
+def getPreuserInfoByKey(key):
+    if key == None: return None, None, None
+
+    doc = db.preApiUser.find_one({"key_id": key})
+    if doc != None:
+        email = doc['email']
+        app_name = doc['app_name']
+        app_purpose = doc['app_purpose']
+        return email, app_name, app_purpose
+    return None, None, None
+
+def getDocListPreUser():
+    docList = db.preApiUser.find({"accept": {'$ne': 1}})
+    return docList
+
+def updatePreuserInfoByKey(key, accept, reason):
+    post = {
+        'accept': accept,
+        'reason': reason
+        }
+    db.preApiUser.update({"key_id": key}, {'$set': post})
+
 def reissue(_id):
     today = datetime.today()
     key, hashKey = generateCode()

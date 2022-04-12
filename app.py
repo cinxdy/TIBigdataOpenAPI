@@ -84,7 +84,7 @@ def register():
     # if request.remote_addr != '127.0.0.1':
     #     abort(403)
     if request.method == 'POST':
-        session['id'] = request.form['email']
+        email = request.form['email']
         app_type = request.form['app_type']
         app_name = request.form['app_name']
         app_purpose = request.form['app_purpose']
@@ -93,22 +93,58 @@ def register():
             authKey = registerAPI('public',app_name,app_purpose)
             return {'authKey':authKey}
         elif app_type=='private':
-            send_veri_email(session['id'], app_name,app_purpose)
+            key = preRegisterAPI(email, app_name, app_purpose)
+            send_veri_email(email, app_name, app_purpose, key)
             return {'authKey': 'success'}
         return {'authKey': 'fail'}
         # return render_template('register.html',app_name=app_name,app_purpose=app_purpose, authKey = authKey)
     return redirect(home)
 
-@app.route('/registerManual', methods=['GET'])
-def registerManual():
-    session['id'] = request.args.get('email')
-    # app_type = request.form['app_type']
-    app_name = request.args.get('app_name')
-    app_purpose = request.args.get('app_purpose')
+# @app.route('/registerManual', methods=['GET','POST'])
+# def registerManual():
+#     email = request.args.get('email')
+#     # app_type = request.form['app_type']
+#     app_name = request.args.get('app_name')
+#     app_purpose = request.args.get('app_purpose')
 
-    authKey = registerAPI('private', app_name,app_purpose)
-    send_info_email(session['id'], app_name,app_purpose, authKey)
-    return '정상 승인되었습니다.'
+#     return {'succeed':True}
+
+    # accept = request.args.get('accept')
+    # if(accept):
+        # authKey = registerAPI('private', app_name,app_purpose)
+        # send_info_email(session['id'], app_name, app_purpose, authKey)
+        # return '정상 승인 처리되었습니다.'
+    # else: 
+        # return render_template('refuse.html',app_name=app_name,app_purpose=app_purpose, authKey = authKey)
+        # reason = request.args.get('reason')
+        # send_refuse_email(session['id'], app_name, app_purpose, reason)
+        # return '정상 반려 처리되었습니다.'
+
+@app.route('/acceptPreUser', methods=['GET','POST'])
+def registerManual():
+    if request.method == 'GET':
+        key = request.args.get('key')
+        email, app_name, app_purpose = getPreuserInfoByKey(key)
+        docList = getDocListPreUser()
+        return render_template('accept.html', email = email, app_name=app_name,app_purpose=app_purpose, key=key, docList=docList)
+
+    elif request.method == 'POST': # post
+        key = request.form['key']
+        accept = int(request.form['accept'])
+        reason = request.form['reason']
+        if reason == None: return '사유를 입력해주세요. 처리되지 않았습니다.'
+
+        email, app_name, app_purpose = getPreuserInfoByKey(key)
+        session['id'] = email
+        updatePreuserInfoByKey(key, accept, reason)
+
+        if accept:
+            authKey = registerAPI('private',app_name,app_purpose)
+            send_info_email(email, app_name, app_purpose, authKey)
+        else:
+            send_refuse_email(email, app_name, app_purpose, reason)
+        return '정상처리되었습니다'
+
 
 @app.route('/reissue', methods=['POST'])
 def reissue():
