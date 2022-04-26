@@ -87,7 +87,7 @@ def updatePreuserInfoByKey(key, accept, reason):
         }
     db.preApiUser.update({"key_id": key}, {'$set': post})
 
-def reissue(_id):
+def reissueAPI(_id):
     today = datetime.today()
     key, hashKey = generateCode()
 
@@ -99,7 +99,7 @@ def reissue(_id):
         }
 
     db.apiUser.update({"_id": ObjectId(_id)}, {'$set': post})
-    print("reissue> app_name", post['app_name'],"key", key)
+    # print("reissue> app_name", post['app_name'],"key", key)
     return key
 
 def deleteAPI(_id):

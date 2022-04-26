@@ -150,7 +150,7 @@ def registerManual():
 def reissue():
     session['id'] = request.form['email']
     _id = request.form['_id']
-    authKey = reissue(_id)
+    authKey = reissueAPI(_id)
     return {'authKey':authKey}
 
 @app.route('/delete', methods=['POST'])
