@@ -85,6 +85,7 @@ def register():
     #     abort(403)
     if request.method == 'POST':
         email = request.form['email']
+        session['id']=email
         app_type = request.form['app_type']
         app_name = request.form['app_name']
         app_purpose = request.form['app_purpose']

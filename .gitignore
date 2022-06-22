@@ -4,3 +4,4 @@ __pycache__/
 /whatap
 esAccount.py
 kubic_ssl.py
+service-key.json
