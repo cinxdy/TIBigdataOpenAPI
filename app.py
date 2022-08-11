@@ -144,7 +144,7 @@ def registerManual():
             send_info_email(email, app_name, app_purpose, authKey)
         else:
             send_refuse_email(email, app_name, app_purpose, reason)
-        return '정상처리되었습니다'
+        return "<html>정상처리되었습니다. <a href=https://kubic.handong.edu:15000/acceptPreUser?key="+key+">돌아가기</a></html>"
 
 
 @app.route('/reissue', methods=['POST'])
