@@ -1,112 +1,112 @@
 {
-   "header":{
-      "resultCode":200,
-      "resultMSG":"OK"
-   },
-   "body":{
-      "numOfCnt":100,
-      "totalCnt":9,
-      "rank":1,
-      "contents":[
-         {
-            "title":"한미FTA와 양국 금융시장 전망 간담회(080118)",
-            "body":"- 서브프라임 모기지 사태를 중심으로(하준경, 한국금융연구원 연구위원)",
-            "writer":"작성자 :통일외교통상위원회",
-            "date":"작성일 :2008-01-18",
-            "institution":"국회 외교통일위원회",
-            "institutionURL":"https://uft.na.go.kr",
-            "category":"참고자료",
-            "fileURL":"https://uft.na.go.kr:444/uft/reference/reference02.do?mode=download&articleNo=525246&attachNo=405032",
-            "fileName":"\n\t\t\t\n\t\t\t한미FTA와 양국 금융시장 전망 간담회(080118)\n\t\t\t\n\t\t\t\n\t\t"
-         },
-         {
-            "title":"('06-라틴아메리카 정치체제 변동에 관한 조사 연구-김윤자)",
-            "body":"정책연구용역",
-            "writer":"작성자 :외교통상통일위원회",
-            "date":"작성일 :2009-09-09",
-            "institution":"국회 외교통일위원회",
-            "institutionURL":"https://uft.na.go.kr",
-            "category":"참고자료",
-            "fileURL":"https://uft.na.go.kr:444/uft/reference/reference02.do?mode=download&articleNo=525499&attachNo=405545",
-            "fileName":"\n\t\t\t\n\t\t\t('06-라틴아메리카 정치체제 변동에 관한 조사 연구-김윤자)\n\t\t\t\n\t\t\t\n\t\t"
-         },
-         {
-            "title":"\r\n\t\t\t\t\t평화통일을 위한 통일외교 전략\r\n\t\t\t\t",
-            "body":"",
-            "writer":"박영호 외 공저",
-            "date":null,
-            "institution":"통일부",
-            "institutionURL":"https://unibook.unikorea.go.kr/",
-            "category":"통일부 발간물",
-            "fileURL":"http://unibook.unikorea.go.kr/libeka/elec/WebBook_data4/kinu/222689.pdf",
-            "fileName":"\r\n\t\t\t\t\t평화통일을 위한 통일외교 전략\r\n\t\t\t\t"
-         },
-         {
-            "title":"평화통일을 위한 통일외교 전략",
-            "body":"",
-            "writer":"박영호",
-            "date":"2011",
-            "institution":"통일부",
-            "institutionURL":"https://unibook.unikorea.go.kr/",
-            "category":" 국제관계",
-            "fileURL":"https://unibook.unikorea.go.kr/files/2a76a9f9-8133-4789-9aa7-7a0c66e4db1b",
-            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t평화통일을 위한 통일외교 전략.pdf \r\n \t\t\t"
-         },
-         {
-            "title":"\r\n\t\t\t\t\t(2018) 통일논문집 : (제37회) 대학(원)생 통일논문 현상공모 입선작\r\n\t\t\t\t",
-            "body":"",
-            "writer":"통일부 통일교육원 편",
-            "date":null,
-            "institution":"통일부",
-            "institutionURL":"https://unibook.unikorea.go.kr/",
-            "category":"통일부 발간물",
-            "fileURL":"http://unibook.unikorea.go.kr/libeka/elec/20190100000000003.pdf",
-            "fileName":"\r\n\t\t\t\t\t(2018) 통일논문집 : (제37회) 대학(원)생 통일논문 현상공모 입선작\r\n\t\t\t\t"
-         },
-         {
-            "title":"2018 통일논문집",
-            "body":null,
-            "writer":"통일교육원",
-            "date":"\n2018-01-01\n",
-            "institution":"통일연구원",
-            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
-            "category":"\r\n\t\t통일부 발간자료\n",
-            "fileURL":"http://www.kinu.or.kr/com/file/filedown?_ci=30340&_ck=419b050e4ad74eb4a25002d190769e27",
-            "fileName":"2018 통일논문집"
-         },
-         {
-            "title":"대북정책의 대국민 확산방안",
-            "body":"",
-            "writer":"조한범 외 공저",
-            "date":"2009",
-            "institution":"통일부",
-            "institutionURL":"https://unibook.unikorea.go.kr/",
-            "category":" 남북관계",
-            "fileURL":"https://unibook.unikorea.go.kr/files/bbs_kinu_0001413011",
-            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t대북정책의 대국민 확산방안.pdf \r\n \t\t\t"
-         },
-         {
-            "title":"대북정책의 대국민 확산방안",
-            "body":"제1부 이명박 정부 대북정책과 확산체계Ⅰ. 서론/ 조한범(통일연구원)Ⅱ. 이명박 정부의 대북정책/ / 남성욱(국가안보전략연구소)Ⅲ. 이명박 정부 대북정책의 확산체계와 장애요인/ / 류길재(북한대학원대학교)Ⅳ. 대북정책 확산을 위한 새로운 담론체계: ‘글로벌 코리아’와 국제공조를 중심으로/ 이상현(세종연구소)제2부 분야별 대북정책 확산방안Ⅴ. 남남갈등 극복을",
-            "writer":"조한범 외 공저",
-            "date":"2009",
-            "institution":"통일연구원",
-            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
-            "category":"\r\n\t\t남북관계-대북정책\n",
-            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/7720b708-222c-4d96-898b-5712c56bb37c",
-            "fileName":"대북정책의 대국민 확산방안"
-         },
-         {
-            "title":"대북정책의 대국민 확산방안",
-            "body":"제1부 이명박 정부 대북정책과 확산체계Ⅰ. 서론/ 조한범(통일연구원)Ⅱ. 이명박 정부의 대북정책/ / 남성욱(국가안보전략연구소)Ⅲ. 이명박 정부 대북정책의 확산체계와 장애요인/ / 류길재(북한대학원대학교)Ⅳ. 대북정책 확산을 위한 새로운 담론체계: ‘글로벌 코리아’와 국제공조를 중심으로/ 이상현(세종연구소)제2부 분야별 대북정책 확산방안Ⅴ. 남남갈등 극복을",
-            "writer":"조한범 외 공저",
-            "date":"2009",
-            "institution":"통일연구원",
-            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
-            "category":"\r\n\t\t연구보고서-정책연구시리즈\n",
-            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/7720b708-222c-4d96-898b-5712c56bb37c",
-            "fileName":"대북정책의 대국민 확산방안"
-         }
-      ]
-   }
-}
+    "header":{
+       "resultCode":200,
+       "resultMSG":"OK"
+    },
+    "body":{
+       "numOfCnt":100,
+       "totalCnt":9,
+       "rank":1,
+       "contents":[
+          {
+             "title":"한미FTA와 양국 금융시장 전망 간담회(080118)",
+             "body":"- 서브프라임 모기지 사태를 중심으로(하준경, 한국금융연구원 연구위원)",
+             "writer":"작성자 :통일외교통상위원회",
+             "date":"작성일 :2008-01-18",
+             "institution":"국회 외교통일위원회",
+             "institutionURL":"https://uft.na.go.kr",
+             "category":"참고자료",
+             "fileURL":"https://uft.na.go.kr:444/uft/reference/reference02.do?mode=download&articleNo=525246&attachNo=405032",
+             "fileName":"\n\t\t\t\n\t\t\t한미FTA와 양국 금융시장 전망 간담회(080118)\n\t\t\t\n\t\t\t\n\t\t"
+          },
+          {
+             "title":"('06-라틴아메리카 정치체제 변동에 관한 조사 연구-김윤자)",
+             "body":"정책연구용역",
+             "writer":"작성자 :외교통상통일위원회",
+             "date":"작성일 :2009-09-09",
+             "institution":"국회 외교통일위원회",
+             "institutionURL":"https://uft.na.go.kr",
+             "category":"참고자료",
+             "fileURL":"https://uft.na.go.kr:444/uft/reference/reference02.do?mode=download&articleNo=525499&attachNo=405545",
+             "fileName":"\n\t\t\t\n\t\t\t('06-라틴아메리카 정치체제 변동에 관한 조사 연구-김윤자)\n\t\t\t\n\t\t\t\n\t\t"
+          },
+          {
+             "title":"\r\n\t\t\t\t\t평화통일을 위한 통일외교 전략\r\n\t\t\t\t",
+             "body":" ",
+             "writer":"박영호 외 공저",
+             "date":null,
+             "institution":"통일부",
+             "institutionURL":"https://unibook.unikorea.go.kr/",
+             "category":"통일부 발간물",
+             "fileURL":"http://unibook.unikorea.go.kr/libeka/elec/WebBook_data4/kinu/222689.pdf",
+             "fileName":"\r\n\t\t\t\t\t평화통일을 위한 통일외교 전략\r\n\t\t\t\t"
+          },
+          {
+             "title":"평화통일을 위한 통일외교 전략",
+             "body":" ",
+             "writer":"박영호",
+             "date":"2011",
+             "institution":"통일부",
+             "institutionURL":"https://unibook.unikorea.go.kr/",
+             "category":" 국제관계",
+             "fileURL":"https://unibook.unikorea.go.kr/files/2a76a9f9-8133-4789-9aa7-7a0c66e4db1b",
+             "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t평화통일을 위한 통일외교 전략.pdf \r\n \t\t\t"
+          },
+          {
+             "title":"\r\n\t\t\t\t\t(2018) 통일논문집 : (제37회) 대학(원)생 통일논문 현상공모 입선작\r\n\t\t\t\t",
+             "body":" ",
+             "writer":"통일부 통일교육원 편",
+             "date":null,
+             "institution":"통일부",
+             "institutionURL":"https://unibook.unikorea.go.kr/",
+             "category":"통일부 발간물",
+             "fileURL":"http://unibook.unikorea.go.kr/libeka/elec/20190100000000003.pdf",
+             "fileName":"\r\n\t\t\t\t\t(2018) 통일논문집 : (제37회) 대학(원)생 통일논문 현상공모 입선작\r\n\t\t\t\t"
+          },
+          {
+             "title":"2018 통일논문집",
+             "body":null,
+             "writer":"통일교육원",
+             "date":"\n2018-01-01\n",
+             "institution":"통일연구원",
+             "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+             "category":"\r\n\t\t통일부 발간자료\n",
+             "fileURL":"http://www.kinu.or.kr/com/file/filedown?_ci=30340&_ck=419b050e4ad74eb4a25002d190769e27",
+             "fileName":"2018 통일논문집"
+          },
+          {
+             "title":"대북정책의 대국민 확산방안",
+             "body":" ",
+             "writer":"조한범 외 공저",
+             "date":"2009",
+             "institution":"통일부",
+             "institutionURL":"https://unibook.unikorea.go.kr/",
+             "category":" 남북관계",
+             "fileURL":"https://unibook.unikorea.go.kr/files/bbs_kinu_0001413011",
+             "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t대북정책의 대국민 확산방안.pdf \r\n \t\t\t"
+          },
+          {
+             "title":"대북정책의 대국민 확산방안",
+             "body":"\r\n\t\t제1부 이명박 정부 대북정책과 확산체계Ⅰ. 서론/ 조한범(통일연구원)Ⅱ. 이명박 정부의 대북정책/ / 남성욱(국가안보전략연구소)Ⅲ. 이명박 정부 대북정책의 확산체계와 장애요인/ / 류길재(북한대학원대학교)Ⅳ. 대북정책 확산을 위한 새로운 담론체계: ‘글로벌 코리아’와 국제공조를 중심으로/ 이상현(세종연구소)제2부 분야별 대북정책 확산방안Ⅴ. 남남갈등 극복을 통한 대북정책 합의기반 강화방안/ 정은미(서울대학교)Ⅵ. 상생과 공영의 새로운 남북경협 패러다임: 국민적 공감대 형성을 중심으로/ 윤덕룡(대외경제정책연구원)Ⅶ. 대북정책의 시민사회 확산방안/ / 김도태(충북대학교), 라미경(순천향대학교)Ⅷ. 대북정책의 지역사회 확산체계 구축방안/ / 고성준(제주대학교), 고경민(제주대학교)Ⅸ. 매스미디어를 통한 대북정책 확산방안/ 이우영(북한대학원대학교)Ⅹ. 대북정책 확산의 국제협력방안/ / 김영호(성신여자대학교)？. 북한 리스크의 대국민 이해 확산을 위한 모델연구: 인덱스의 개발을 중심으로/ 김용호(연세대학교)？. 결론: 대북정책의 사회적 합의 도출/ 조한범(통일연구원)",
+             "writer":"조한범 외 공저",
+             "date":"2009",
+             "institution":"통일연구원",
+             "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+             "category":"\r\n\t\t남북관계-대북정책\n",
+             "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/7720b708-222c-4d96-898b-5712c56bb37c",
+             "fileName":"대북정책의 대국민 확산방안"
+          },
+          {
+             "title":"대북정책의 대국민 확산방안",
+             "body":"\r\n\t\t제1부 이명박 정부 대북정책과 확산체계Ⅰ. 서론/ 조한범(통일연구원)Ⅱ. 이명박 정부의 대북정책/ / 남성욱(국가안보전략연구소)Ⅲ. 이명박 정부 대북정책의 확산체계와 장애요인/ / 류길재(북한대학원대학교)Ⅳ. 대북정책 확산을 위한 새로운 담론체계: ‘글로벌 코리아’와 국제공조를 중심으로/ 이상현(세종연구소)제2부 분야별 대북정책 확산방안Ⅴ. 남남갈등 극복을 통한 대북정책 합의기반 강화방안/ 정은미(서울대학교)Ⅵ. 상생과 공영의 새로운 남북경협 패러다임: 국민적 공감대 형성을 중심으로/ 윤덕룡(대외경제정책연구원)Ⅶ. 대북정책의 시민사회 확산방안/ / 김도태(충북대학교), 라미경(순천향대학교)Ⅷ. 대북정책의 지역사회 확산체계 구축방안/ / 고성준(제주대학교), 고경민(제주대학교)Ⅸ. 매스미디어를 통한 대북정책 확산방안/ 이우영(북한대학원대학교)Ⅹ. 대북정책 확산의 국제협력방안/ / 김영호(성신여자대학교)？. 북한 리스크의 대국민 이해 확산을 위한 모델연구: 인덱스의 개발을 중심으로/ 김용호(연세대학교)？. 결론: 대북정책의 사회적 합의 도출/ 조한범(통일연구원)",
+             "writer":"조한범 외 공저",
+             "date":"2009",
+             "institution":"통일연구원",
+             "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+             "category":"\r\n\t\t연구보고서-정책연구시리즈\n",
+             "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/7720b708-222c-4d96-898b-5712c56bb37c",
+             "fileName":"대북정책의 대국민 확산방안"
+          }
+       ]
+    }
+ }

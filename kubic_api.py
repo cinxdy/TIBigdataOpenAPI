@@ -2,21 +2,24 @@ from flask import request
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 from kubic_user import *
-from elasticsearch import Elasticsearch
-import esAccount as esAcc
+from kubic_data import *
+
+ES, index = ESConnection()
 
 def makeRequest():
 
     keyList = ['serviceKey','numOfCnt','rank','keyword','keyInTitle','keyInBody','writer','startDate','endDate','institution','category' ]
-
+    
     for k in request.args.keys():
         if not k in keyList:
             resultCode = 400
             resultMSG = 'Bad Request: ' + k
+            return {}, resultCode, resultMSG
     
     if not 'serviceKey' in request.args:
         resultCode = 400
         resultMSG = 'Bad Request: No serviceKey'
+        return {}, resultCode, resultMSG
 
     elif not 'keyword' in request.args and not 'keyInTitle' in request.args:
         resultCode = 400
@@ -42,25 +45,20 @@ def makeRequest():
     
     return kubic_request, resultCode, resultMSG
 
-def esSearch(request):
-    #Connect to DB
-    ES = Elasticsearch([{'host': esAcc.host, 'port': esAcc.port}], http_auth=(esAcc.id, esAcc.password))
+def simple_search(request):
+    # search the keyword in the document
+    response = ES.search(index=index, body={    
+    "size": request['numOfCnt'],
+    "query": {
+      "multi_match": {
+        "query": request['keyword'],
+        "fields": ["post_title", "post_body", "fileName", "fileContent", "file_extracted_content"]
+      }
+    }
+  })
+    return response
 
-    # ES = Elasticsearch(host = '203.252.103.119', port=9200)
-
-    print(ES.cat.indices())
-
-    #search the document
-#     response = ES.search(index=index, body={    
-#     "size": request['numOfCnt'],
-#     "query": {
-#       "multi_match": {
-#         "query": request['keyword'],
-#         "fields": ["post_title", "post_body", "fileName", "fileContent"]
-#       }
-#     }
-#   })
-
+def detailed_search(request):
     query = {
     "size": request['numOfCnt'],
     "query": {
@@ -87,20 +85,23 @@ def esSearch(request):
 
     # print("response:",str(response)[:30])
     return response
+
+def esSearch(searchType, request):
+    return {'simple_search': simple_search(request), 'detailed_search': detailed_search(request) }[searchType]
     
-def raiseError(response, resultCode, resultMSG):
+def raiseError(response, resultCode, resultMSG, searchType='all'):
     response['header']['resultCode'] = resultCode
     response['header']['resultMSG'] = resultMSG
     return response
 
-def makeResponse(request, resultCode, resultMSG):
+def makeResponse(request, resultCode, resultMSG, searchType):
     response = {
-            "header":{
-                "resultCode": resultCode,
-                "resultMSG": resultMSG,
-            },
-            "body": {},
-        }
+        "header":{
+            "resultCode": resultCode,
+            "resultMSG": resultMSG,
+        },
+        "body": {},
+    }
 
     if resultCode != 200:
         return response
@@ -115,7 +116,8 @@ def makeResponse(request, resultCode, resultMSG):
     if not limitTraffic(_id):
         return raiseError(response, 401,'Overused')
 
-    try: data = esSearch(request)
+    try: data = esSearch(searchType, request)
+
     except Exception as e:
         print(e)
         return raiseError(response, 502,'Bad Gateway')
@@ -125,19 +127,22 @@ def makeResponse(request, resultCode, resultMSG):
         return raiseError(response, 204,'No Content')
 
     def slicingBody(content):
-        post_body = ' '.join(content['_source']['post_body'].split())
-        if len(post_body) > 400:
-            post_body = post_body[:400]
-        return post_body
-
+        try:
+            post_body = ' '.join(content['_source']['post_body'].split())
+            if len(post_body) > 200:
+                post_body = post_body[:200]
+            return post_body
+        except:
+            return content['_source']['post_body']
     response['body'] = {
                 "numOfCnt": request['numOfCnt'],
                 "totalCnt": data['hits']['total']['value'],
                 "rank" : request['rank'],
                 "contents":[{
                     "title": content['_source']['post_title'],
-                    "body": content['_source']['post_body'],
-                    # slicingBody(content) if 'post_body' in content['_source'].keys() else None,
+                    "body": 
+                    # content['_source']['post_body'],
+                    slicingBody(content) if 'post_body' in content['_source'].keys() else None,
                     "writer": content['_source']['post_writer'],
                     "date": content['_source']['post_date'] if 'post_date' in content['_source'] else None,
                     "institution": content['_source']['published_institution'],

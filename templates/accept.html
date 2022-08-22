@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>
+    활용 신청 확인
+</h1>
+{%if key != None %}
+<form method="POST" action="/acceptPreUser">
+    <input type="hidden" name="key" value={{key}}>
+
+    <br> 이메일: {{email}} 
+    <br> 활용명: {{app_name}}
+    <br> 활용목적: {{app_purpose}}
+
+    <br>
+    승인<input type="radio" name="accept" value=1>
+    반려<input type="radio" name="accept" value=0>
+    <br>
+    <input type="text" name="reason" class="form-control" rows="3" placeholder="반려 사유를 입력하세요">
+    <br>
+    <button type="submit" class="btn btn-info">
+    등록</button>
+</form>
+{%endif%}
+
+<table>
+    <thead>
+        <tr>
+          <th class="doc-num">No.</th>
+          <th class="doc-title">활용명</th>
+          <th class="doc-purpose">활용목적</th>
+          <th class="doc-postdate">신청일</th>
+          <th class="doc-postdate">결과</th>
+          <th class="doc-manage">관리</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {%for item in docList%}
+        <tr>
+          <td class="text-center">{{ loop.index }}</td>
+          <td class="text-center">{{ item['app_name'] }}</td>
+          <td class="text-center">{{ item['app_purpose'] }}</td>
+          <td class="text-center">{{ item['reporting_date'] }}</td>
+          <td class="text-center">{% if item['accept'] ==0 %} 반려됨 {% else %} 미승인 {%endif%}</td>
+          <td class="text-center">
+            <a href="/acceptPreUser?key={{ item['key_id'] }}">처리</button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+</table>
+
+</html>
+{% endblock %}
