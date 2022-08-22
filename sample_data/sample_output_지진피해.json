@@ -1,0 +1,442 @@
+{
+   "header":{
+      "resultCode":200,
+      "resultMSG":"OK"
+   },
+   "body":{
+      "numOfCnt":100,
+      "totalCnt":39,
+      "rank":1,
+      "contents":[
+         {
+            "title":"해외긴급구호에 관한 법률안에 관한 공청회(051128)",
+            "body":"참고하세요",
+            "writer":"작성자 :통일외교통상위원회",
+            "date":"작성일 :2005-12-14",
+            "institution":"국회 외교통일위원회",
+            "institutionURL":"https://uft.na.go.kr",
+            "category":"참고자료",
+            "fileURL":"https://uft.na.go.kr:444/uft/reference/reference02.do?mode=download&articleNo=524851&attachNo=404019",
+            "fileName":"\n\t\t\t\n\t\t\t해외긴급구호에 관한 법률안에 관한 공청회(051128)\n\t\t\t\n\t\t\t\n\t\t"
+         },
+         {
+            "title":"주간통일정세2008-20(2008.5.13~5.18)",
+            "body":"",
+            "writer":"북한연구실",
+            "date":"2008",
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":" 기타",
+            "fileURL":"https://unibook.unikorea.go.kr/files/df7f365b-ba14-4098-acf1-b8d826c77707",
+            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t주간통일정세2008-20(2008.5.13~5.18).pdf \r\n \t\t\t"
+         },
+         {
+            "title":"주간통일정세2008-20(2008.5.13~5.18)",
+            "body":null,
+            "writer":"북한연구실,국제관계연구실 편",
+            "date":"2008",
+            "institution":"통일연구원",
+            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+            "category":"\r\n\t\t정기간행물-주간통일정세\n",
+            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/ad2c1888-3323-4ca7-8627-0373743775ec",
+            "fileName":"주간통일정세2008-20(2008.5.13~5.18)"
+         },
+         {
+            "title":"주간통일정세2008-23(2008.6.2~6.8)",
+            "body":"",
+            "writer":"북한연구실",
+            "date":"2008",
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":" 기타",
+            "fileURL":"https://unibook.unikorea.go.kr/files/6148ce7c-45f7-43cf-92ef-afe5c310f08a",
+            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t주간통일정세2008-23(2008.6.2~6.8).pdf \r\n \t\t\t"
+         },
+         {
+            "title":"주간통일정세2008-23(2008.6.2~6.8)",
+            "body":null,
+            "writer":"북한연구실,국제관계연구실 편",
+            "date":"2008",
+            "institution":"통일연구원",
+            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+            "category":"\r\n\t\t정기간행물-주간통일정세\n",
+            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/3226ff1c-ee5c-4b44-8245-5b8f853b6f99",
+            "fileName":"주간통일정세2008-23(2008.6.2~6.8)"
+         },
+         {
+            "title":"주간통일정세2008-24(2008.6.9~6.15)",
+            "body":"",
+            "writer":"북한연구실",
+            "date":"2008",
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":" 기타",
+            "fileURL":"https://unibook.unikorea.go.kr/files/79331cd5-98e5-4762-9b4f-13827b9cc1da",
+            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t주간통일정세2008-24(2008.6.9~6.15).pdf \r\n \t\t\t"
+         },
+         {
+            "title":"주간통일정세2008-24(2008.6.9~6.15)",
+            "body":null,
+            "writer":"북한연구실,국제관계연구실 편",
+            "date":"2008",
+            "institution":"통일연구원",
+            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+            "category":"\r\n\t\t정기간행물-주간통일정세\n",
+            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/9485e766-e80a-4d8a-824a-bca0e5842df6",
+            "fileName":"주간통일정세2008-24(2008.6.9~6.15)"
+         },
+         {
+            "title":"인민보안단속법(구 사회안전단속법) 개정과 북한의 주민통제 강화",
+            "body":"",
+            "writer":"이규창",
+            "date":"2011",
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":" 북한",
+            "fileURL":"https://unibook.unikorea.go.kr/files/bbs_kinu_0001447728",
+            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t인민보안단속법(구 사회안전단속법) 개정과 북한의 주민통제 강화.pdf \r\n \t\t\t"
+         },
+         {
+            "title":"인민보안단속법(구 사회안전단속법) 개정과 북한의 주민통제 강화",
+            "body":"북한이 최근 인권 관련 법령을 제정 또는 개정해 오고 있는데 인민보안단속법의 개정도 주목해서 볼 필요가 있다. 아래에서는 구 사회안전단속법과 인민보안단속법의 개정 내용을 비교함으로써 인민보안단속법의 특징을 간략하게 살펴보고자 한다.",
+            "writer":"이규창",
+            "date":"2011-11-15",
+            "institution":"통일연구원",
+            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+            "category":"\r\n\t\t현안분석-온라인시리즈\n",
+            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/762ae3d8-ef81-40dc-9849-3c9638ebbdf2",
+            "fileName":"인민보안단속법(구 사회안전단속법) 개정과 북한의 주민통제 강화"
+         },
+         {
+            "title":"주간통일정세 2016-16(2016.04.17~2016.04.23)",
+            "body":null,
+            "writer":"북한연구실국제전략연구실북한인권연구센터 편",
+            "date":"2016-04-23",
+            "institution":"통일연구원",
+            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+            "category":"\r\n\t\t정기간행물-주간통일정세\n",
+            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/b6a06c64-6d4e-4ab7-bd84-47df17cb2057",
+            "fileName":"주간통일정세 2016-16(2016.04.17~2016.04.23)"
+         },
+         {
+            "title":"주간통일정세 2016-16(2016.04.17~2016.04.23)",
+            "body":"",
+            "writer":"북한연구실",
+            "date":"20160423",
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":" 기타",
+            "fileURL":"https://unibook.unikorea.go.kr/files/3dbef11d-95f8-4b03-bf48-b510d51f3da9",
+            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t주간통일정세 2016-16(2016.04.17~2016.04.23).pdf \r\n \t\t\t"
+         },
+         {
+            "title":"주간통일정세2008-21(2008.5.19~5.25)",
+            "body":null,
+            "writer":"북한연구실,국제관계연구실 편",
+            "date":"2008",
+            "institution":"통일연구원",
+            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+            "category":"\r\n\t\t정기간행물-주간통일정세\n",
+            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/6e60ea49-88ba-438e-9281-467a5328353e",
+            "fileName":"주간통일정세2008-21(2008.5.19~5.25)"
+         },
+         {
+            "title":"주간통일정세2008-21(2008.5.19~5.25)",
+            "body":"",
+            "writer":"북한연구실",
+            "date":"2008",
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":" 기타",
+            "fileURL":"https://unibook.unikorea.go.kr/files/9363a863-09d2-4c25-811d-f0adcbacb373",
+            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t주간통일정세2008-21(2008.5.19~5.25).pdf \r\n \t\t\t"
+         },
+         {
+            "title":"월간 북한동향 2016년 04월",
+            "body":"월간북한동향 2016년 04월 자료입니다.",
+            "writer":"통일부",
+            "date":"2016-04-13",
+            "institution":"통일부",
+            "institutionURL":"https://www.unikorea.go.kr",
+            "category":"북한동향",
+            "fileURL":"https://www.unikorea.go.kr//board/file/bbs_0000000000000001/45748/FILE_000000000013250/45748_201606221355437530",
+            "fileName":"\r\n 월간 북한동향 2016년 04월\r\n "
+         },
+         {
+            "title":"주간통일정세 2013-17(2013.04.22~2013.04.28)",
+            "body":"",
+            "writer":"북한연구센터",
+            "date":"20130427",
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":" 기타",
+            "fileURL":"https://unibook.unikorea.go.kr/files/438809ec-8faa-4bf8-9538-759842edb505",
+            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t주간통일정세 2013-17(2013.04.22~2013.04.28).pdf \r\n \t\t\t"
+         },
+         {
+            "title":"주간통일정세2011-12(2011.03.14-2011.03.20)",
+            "body":"",
+            "writer":"북한연구센터",
+            "date":"20110320",
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":" 기타",
+            "fileURL":"https://unibook.unikorea.go.kr/files/1eee626f-fcf1-4b74-a6d5-3bf087b1fdc6",
+            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t주간통일정세2011-12(2011.03.14-2011.03.20).pdf \r\n \t\t\t"
+         },
+         {
+            "title":"주간통일정세2011-17(2011.04.18-2011.04.24)",
+            "body":null,
+            "writer":"북한연구센터,국제관계연구센터 편",
+            "date":"2011-04-24",
+            "institution":"통일연구원",
+            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+            "category":"\r\n\t\t정기간행물-주간통일정세\n",
+            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/3f14f7dc-8557-42e7-99de-0802faa1f8d5",
+            "fileName":"주간통일정세2011-17(2011.04.18-2011.04.24)"
+         },
+         {
+            "title":"주간통일정세2011-12(2011.03.14-2011.03.20)",
+            "body":null,
+            "writer":"북한연구센터,국제관계연구센터 편",
+            "date":"2011-03-20",
+            "institution":"통일연구원",
+            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+            "category":"\r\n\t\t정기간행물-주간통일정세\n",
+            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/dc5c2d24-ffb7-4483-ae12-de3b91c188e3",
+            "fileName":"주간통일정세2011-12(2011.03.14-2011.03.20)"
+         },
+         {
+            "title":"주간통일정세2011-17(2011.04.18-2011.04.24)",
+            "body":"",
+            "writer":"북한연구센터",
+            "date":"20110424",
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":" 기타",
+            "fileURL":"https://unibook.unikorea.go.kr/files/96ab11f6-9bc2-4103-8ed7-a65e7f5492f7",
+            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t주간통일정세2011-17(2011.04.18-2011.04.24).pdf \r\n \t\t\t"
+         },
+         {
+            "title":"주간통일정세 2013-17(2013.04.22~2013.04.28)",
+            "body":null,
+            "writer":"북한연구센터국제관계연구센터 편",
+            "date":"2013-04-27",
+            "institution":"통일연구원",
+            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+            "category":"\r\n\t\t정기간행물-주간통일정세\n",
+            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/dae2f03f-dddc-465c-b953-3eea3b84a309",
+            "fileName":"주간통일정세 2013-17(2013.04.22~2013.04.28)"
+         },
+         {
+            "title":"북한의 형사법제상 형사처리절차와 적용 실태",
+            "body":null,
+            "writer":"김수암 저.",
+            "date":"2005",
+            "institution":"통일연구원",
+            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+            "category":"\r\n\t\t연구보고서-연구총서\n",
+            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/fc4b6a63-776c-4246-a121-b24715c4a65b",
+            "fileName":"북한의 형사법제상 형사처리절차와 적용 실태"
+         },
+         {
+            "title":"\r\n\t\t\t\t\t북한의 형사법제상 형사처리절차와 적용 실태\r\n\t\t\t\t",
+            "body":"",
+            "writer":"김수암 저",
+            "date":null,
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":"통일부 발간물",
+            "fileURL":"http://unibook.unikorea.go.kr/libeka/elec/WebBook_data4/kinu/67942.pdf",
+            "fileName":"\r\n\t\t\t\t\t북한의 형사법제상 형사처리절차와 적용 실태\r\n\t\t\t\t"
+         },
+         {
+            "title":"북한의 형사법제상 형사처리절차와 적용 실태",
+            "body":null,
+            "writer":"김수암 저.",
+            "date":"2005",
+            "institution":"통일연구원",
+            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+            "category":"\r\n\t\t북한인권-일반\n",
+            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/fc4b6a63-776c-4246-a121-b24715c4a65b",
+            "fileName":"북한의 형사법제상 형사처리절차와 적용 실태"
+         },
+         {
+            "title":"북한의 형사법제상 형사처리절차와 적용 실태",
+            "body":"",
+            "writer":"김수암 저",
+            "date":"2005",
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":" 북한인권",
+            "fileURL":"https://unibook.unikorea.go.kr/files/bbs_kinu_0000675687",
+            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t북한의 형사법제상 형사처리절차와 적용 실태.pdf \r\n \t\t\t"
+         },
+         {
+            "title":"주간통일정세2011-11(2011.03.07-2011.03.13)",
+            "body":"",
+            "writer":"북한연구센터",
+            "date":"20110313",
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":" 기타",
+            "fileURL":"https://unibook.unikorea.go.kr/files/65651159-f97b-4aba-85e0-92155ae2e7a4",
+            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t주간통일정세2011-11(2011.03.07-2011.03.13).pdf \r\n \t\t\t"
+         },
+         {
+            "title":"주간통일정세2011-11(2011.03.07-2011.03.13)",
+            "body":null,
+            "writer":"북한연구센터,국제관계연구센터 편",
+            "date":"2011-03-13",
+            "institution":"통일연구원",
+            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+            "category":"\r\n\t\t정기간행물-주간통일정세\n",
+            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/f1fc3401-b76e-4f62-8aca-997f43506d4b",
+            "fileName":"주간통일정세2011-11(2011.03.07-2011.03.13)"
+         },
+         {
+            "title":"( 2020 ) 북한지역 재난관리체계의 개선에 관한 연구 : 탈북민의 북한지역 재난관리에 관한 인식을 중심으로 / 홍윤근 ",
+            "body":"",
+            "writer":"관리자",
+            "date":"2020-11-19",
+            "institution":"남북하나재단",
+            "institutionURL":"https://www.koreahana.or.kr/",
+            "category":"박사논문",
+            "fileURL":"https://www.koreahana.or.kr/common/bulletin_download.jsp?seq=110520",
+            "fileName":"( 2020 ) 북한지역 재난관리체계의 개선에 관한 연구 : 탈북민의 북한지역 재난관리에 관한 인식을 중심으로 / 홍윤근 "
+         },
+         {
+            "title":"\r\n\t\t\t\t\t상반기 북한정세 분석 보고서(2011.8)\r\n\t\t\t\t",
+            "body":"",
+            "writer":"최진욱 외 저",
+            "date":null,
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":"통일부 발간물",
+            "fileURL":"http://unibook.unikorea.go.kr/libeka/elec/WebBook_data4/kinu/84049.pdf",
+            "fileName":"\r\n\t\t\t\t\t상반기 북한정세 분석 보고서(2011.8)\r\n\t\t\t\t"
+         },
+         {
+            "title":"상반기 북한정세 분석 보고서",
+            "body":"",
+            "writer":"최진욱, 임강택, 임순희, 정영태, 김진하, 한기범 공저",
+            "date":"2011",
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":" 북한",
+            "fileURL":"https://unibook.unikorea.go.kr/files/bbs_kinu_0001438411",
+            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t상반기 북한정세 분석 보고서.pdf \r\n \t\t\t"
+         },
+         {
+            "title":"상반기 북한정세 분석 보고서",
+            "body":"Ⅰ. 문제 제기Ⅱ. 분야별 동향 분석 1. 정치 분야 2. 외교 분야 3. 대남 분야 4. 경제 분야 5. 사회 문화 분야 6. 군사 분야Ⅲ. 분야별 정세 전망 및 정책적 시사점 1. 분야별 정세 전망 2. 정책적 시사점부록. 북한방송 주요 논조 분야별 구분표",
+            "writer":"최진욱,임강택,임순희,정영태,김진하,한기범 공저.",
+            "date":"2011",
+            "institution":"통일연구원",
+            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+            "category":"\r\n\t\t현안분석-KINU Insight\n",
+            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/c9a199ac-b79c-4e65-bea4-523572409255",
+            "fileName":"상반기 북한정세 분석 보고서"
+         },
+         {
+            "title":"월간 북한동향 제7권 제2호(2013년 3·4월호)",
+            "body":"",
+            "writer":"통일연구원",
+            "date":"2013",
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":" 기타",
+            "fileURL":"https://unibook.unikorea.go.kr/files/74002418-ba34-4503-a68e-dc067157dcb5",
+            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t월간 북한동향 제7권 제2호(2013년 3·4월호).pdf \r\n \t\t\t"
+         },
+         {
+            "title":"\r\n\t\t\t\t\t통일환경 및 남북한 관계 전망(2009~2010)\r\n\t\t\t\t",
+            "body":"",
+            "writer":"통일연구원 편",
+            "date":null,
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":"통일부 발간물",
+            "fileURL":"http://unibook.unikorea.go.kr/libeka/elec/WebBook_data4/kinu/81383.pdf",
+            "fileName":"\r\n\t\t\t\t\t통일환경 및 남북한 관계 전망(2009~2010)\r\n\t\t\t\t"
+         },
+         {
+            "title":"통일환경 및 남북한관계 전망: 2009~2010",
+            "body":"",
+            "writer":"통일연구원 편",
+            "date":"2009",
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":" 남북관계",
+            "fileURL":"https://unibook.unikorea.go.kr/files/bbs_kinu_0001414451",
+            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t통일환경 및 남북한관계 전망: 2009~2010.pdf \r\n \t\t\t"
+         },
+         {
+            "title":"통일환경 및 남북한관계 전망: 2009~2010",
+            "body":"Ⅰ. 동북아정세1. 총론 가. 기조 나. 북한 비핵화 전기 마련 다. 양자관계의 조정 지속 라. 한·중·일 지역협력의 강화2. 동북아 안보정세 가. 세계경제위기와 미 중 시대 개막 나. 미·일 신정부 간의 갈등 다. 한·중·일 국관계의 발전 라. 2010년 전망3. 북핵문제 가. 2009년 정세 평가 나. 2010년 정세 전망4. 한국의 주요 대외관계 가.",
+            "writer":"통일연구원 편",
+            "date":"2009",
+            "institution":"통일연구원",
+            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+            "category":"\r\n\t\t남북관계-일반\n",
+            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/d746aa35-ab2d-40da-ab2e-65c8534639ce",
+            "fileName":"통일환경 및 남북한관계 전망: 2009~2010"
+         },
+         {
+            "title":"북한형사재판제도 연구: 특징과 실태",
+            "body":"",
+            "writer":"이규창, 정광진 공저",
+            "date":"2011",
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":" 북한",
+            "fileURL":"https://unibook.unikorea.go.kr/files/bbs_kinu_0001440465",
+            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t북한형사재판제도 연구: 특징과 실태.pdf \r\n \t\t\t"
+         },
+         {
+            "title":"\r\n\t\t\t\t\t북한형사재판제도 연구: 특징과 실태\r\n\t\t\t\t",
+            "body":"",
+            "writer":"이규창;정광진 공저",
+            "date":null,
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":"통일부 발간물",
+            "fileURL":"http://unibook.unikorea.go.kr/libeka/elec/WebBook_data4/kinu/222373.pdf",
+            "fileName":"\r\n\t\t\t\t\t북한형사재판제도 연구: 특징과 실태\r\n\t\t\t\t"
+         },
+         {
+            "title":"북한형사재판제도 연구",
+            "body":"요약Ⅰ. 서론 1. 연구의 배경과 목적 2. 연구범위 3. 연구방법Ⅱ. 북한형사재판제도의 연원 1. 국내법 2. 국제법 3. 초법적 규범Ⅲ. 정규재판제도 1. 형사사법제도의 특징 2. 재판절차 및 재판심리상의 특징과 실태 3. 판결？판정 집행의 특징과 실태Ⅳ. 유사재판제도 1. 국가안전보위부의 정치범 판결 2. 동지심판 3. 사회주의법무생활지도위원회Ⅴ. 특",
+            "writer":"이규창,정광진 공저.",
+            "date":"2011",
+            "institution":"통일연구원",
+            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+            "category":"\r\n\t\t연구보고서-연구총서\n",
+            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/f13c5d41-7b2b-4c95-8328-30dbbded1be5",
+            "fileName":"북한형사재판제도 연구"
+         },
+         {
+            "title":"월간 북한동향 제5권 제6호(2011년 11·12월호)",
+            "body":"",
+            "writer":"통일연구원",
+            "date":"2011",
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":" 기타",
+            "fileURL":"https://unibook.unikorea.go.kr/files/6c7701a9-563d-45d0-8613-741441310fea",
+            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t월간 북한동향 제5권 제6호(2011년 11·12월호).pdf \r\n \t\t\t"
+         },
+         {
+            "title":"월간 북한동향 제5권 제5호(2011년 9·10월호)",
+            "body":"",
+            "writer":"통일연구원",
+            "date":"2011",
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":" 기타",
+            "fileURL":"https://unibook.unikorea.go.kr/files/a781719d-3497-4acb-a2e0-56dcdc55977a",
+            "fileName":"\r\n \t\t\t\t\r\n \t\t\t\t월간 북한동향 제5권 제5호(2011년 9·10월호).pdf \r\n \t\t\t"
+         }
+      ]
+   }
+}

@@ -1,0 +1,90 @@
+{
+   "header":{
+      "resultCode":200,
+      "resultMSG":"OK"
+   },
+   "body":{
+      "numOfCnt":100,
+      "totalCnt":7,
+      "rank":1,
+      "contents":[
+         {
+            "title":"홍콩·중국 출장 결과보고서",
+            "body":"홍콩·중국 출장 결과보고서",
+            "writer":"작성자 :외교통일위원회",
+            "date":"작성일 :2020-05-06",
+            "institution":"국회 외교통일위원회",
+            "institutionURL":"https://uft.na.go.kr",
+            "category":"참고자료",
+            "fileURL":"https://uft.na.go.kr:444/uft/reference/reference02.do?mode=download&articleNo=663229&attachNo=454060",
+            "fileName":"\n\t\t\t\n\t\t\t홍콩·중국 출장 결과보고서\n\t\t\t\n\t\t\t\n\t\t"
+         },
+         {
+            "title":"[김영윤] \"코로나 19 사태와 남북협력\" (칼럼 제499호)",
+            "body":"KOLOFO 칼럼 제499호코로나 19 사태와 남북협력 김영윤(사)남북물류포럼 대표 코로나 19 사태는 우리 사회 미증유의 변화를 가져오고 있다. 첫째는 개인신상에 대한 정부기관의 힘이 그 어느 때보다도 강력해 진 것이다. 감염병으로부터 자국민의 건강을 지켜내기 위해 보다 스마트한 통제가 이루어지게 하고 있는 것이 작금의 현실이다. 이와 같은 관리방법은 앞",
+            "writer":"관리자",
+            "date":"2020-04-08",
+            "institution":"남북물류포럼",
+            "institutionURL":"http://www.kolofo.org/",
+            "category":"칼럼",
+            "fileURL":null,
+            "fileName":null
+         },
+         {
+            "title":"[김영윤] \"코로나 19 사태와 남북협력\" (칼럼 제499호)",
+            "body":"KOLOFO 칼럼 제499호코로나 19 사태와 남북협력 김영윤(사)남북물류포럼 대표 코로나 19 사태는 우리 사회 미증유의 변화를 가져오고 있다. 첫째는 개인신상에 대한 정부기관의 힘이 그 어느 때보다도 강력해 진 것이다. 감염병으로부터 자국민의 건강을 지켜내기 위해 보다 스마트한 통제가 이루어지게 하고 있는 것이 작금의 현실이다. 이와 같은 관리방법은 앞",
+            "writer":"관리자",
+            "date":"2020-04-08",
+            "institution":"남북물류포럼",
+            "institutionURL":"http://www.kolofo.org/",
+            "category":null,
+            "fileURL":null,
+            "fileName":null
+         },
+         {
+            "title":"[김영윤] \"코로나 19 사태와 남북협력\" (칼럼 제499호)",
+            "body":"KOLOFO 칼럼 제499호코로나 19 사태와 남북협력 김영윤(사)남북물류포럼 대표 코로나 19 사태는 우리 사회 미증유의 변화를 가져오고 있다. 첫째는 개인신상에 대한 정부기관의 힘이 그 어느 때보다도 강력해 진 것이다. 감염병으로부터 자국민의 건강을 지켜내기 위해 보다 스마트한 통제가 이루어지게 하고 있는 것이 작금의 현실이다. 이와 같은 관리방법은 앞",
+            "writer":"관리자",
+            "date":"2020-04-08",
+            "institution":"남북물류포럼",
+            "institutionURL":"http://www.kolofo.org/",
+            "category":null,
+            "fileURL":null,
+            "fileName":null
+         },
+         {
+            "title":"\r\n\t\t\t\t\t남북경협 발전 잠재력과 정책 과제\r\n\t\t\t\t",
+            "body":"",
+            "writer":"김석진 ,홍제환 저",
+            "date":null,
+            "institution":"통일부",
+            "institutionURL":"https://unibook.unikorea.go.kr/",
+            "category":"통일부 발간물",
+            "fileURL":"http://unibook.unikorea.go.kr/libeka/elec/20200300000000028.pdf",
+            "fileName":"\r\n\t\t\t\t\t남북경협 발전 잠재력과 정책 과제\r\n\t\t\t\t"
+         },
+         {
+            "title":"남북경협 발전 잠재력과 정책 과제",
+            "body":"요약 Ⅰ. 서론1. 연구 배경과 필요성2. 연구 목적과 범위Ⅱ. 국제 비교를 통해 본 북한의 비즈니스 환경1. 서론2. 국제 비즈니스 환경 평가 기준 3. 북한의 비즈니스 환경 4. 북한 비즈니스 환경 개선 과제Ⅲ. 남북경협 발전 잠재력: 제조업1. 서론2. 제조업의 일반적 발전 여건 3. 북한의 제조업 발전 여건 4. 전망과 과제Ⅳ. 남북경협 발전 잠재력",
+            "writer":"김석진,홍제환",
+            "date":"2019",
+            "institution":"통일연구원",
+            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+            "category":"\r\n\t\t연구보고서-연구총서\n",
+            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/5ee55a63-28d8-490e-8a30-ea3a8c206d16",
+            "fileName":"남북경협 발전 잠재력과 정책 과제"
+         },
+         {
+            "title":"남북경협 발전 잠재력과 정책 과제",
+            "body":"요약 Ⅰ. 서론1. 연구 배경과 필요성2. 연구 목적과 범위Ⅱ. 국제 비교를 통해 본 북한의 비즈니스 환경1. 서론2. 국제 비즈니스 환경 평가 기준 3. 북한의 비즈니스 환경 4. 북한 비즈니스 환경 개선 과제Ⅲ. 남북경협 발전 잠재력: 제조업1. 서론2. 제조업의 일반적 발전 여건 3. 북한의 제조업 발전 여건 4. 전망과 과제Ⅳ. 남북경협 발전 잠재력",
+            "writer":"김석진,홍제환",
+            "date":"2019",
+            "institution":"통일연구원",
+            "institutionURL":"http://www.kinu.or.kr/www/jsp/prg/",
+            "category":"\r\n\t\t남북관계-교류협력\n",
+            "fileURL":"http://www.kinu.or.kr/pyxis-api/1/digital-files/5ee55a63-28d8-490e-8a30-ea3a8c206d16",
+            "fileName":"남북경협 발전 잠재력과 정책 과제"
+         }
+      ]
+   }
+}
