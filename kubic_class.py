@@ -71,8 +71,11 @@ class kubic_api:
 
     def setResponse(self):
         _id = verification(self.request['serviceKey'])
+
         if not _id:
             return self.raiseError(401,'Unauthorized')
+
+        apptype = getAppType(_id)
             
         if not limitDate(_id):
             return self.raiseError(401,'Expired')
@@ -93,11 +96,28 @@ class kubic_api:
         def slicing400(content):
             try:
                 content_split = ' '.join(content.split())
-                if len(content_split) > 400:
-                    content_split = content_split[:400]
+                if len(content_split) > 200:
+                    content_split = content_split[:200]
                 return content_split
             except:
                 return content
+
+        def editContentByApp(content, datatype):
+            # public user
+            if apptype == 'public':
+                if datatype == 'body':
+                    return slicing400(content)
+                else: return None
+
+            # private user
+            # mode1
+            if esAcc.mode == 1:
+                return content
+                
+            elif esAcc.mode == 2:
+                return slicing400(content)
+
+            else: return None
     
 
         self.response = self.raiseError(200, 'OK')
@@ -109,16 +129,17 @@ class kubic_api:
                     # "rank" : self.request['rank'],
                     "contents":[{
                         "title": content['_source']['post_title'],
-                        "body": slicing400(content['_source']['post_body'])  if 'post_body' in content['_source'].keys() else None,
+                        "body": editContentByApp(content['_source']['post_body'],'body')  if 'post_body' in content['_source'].keys() else None,
                         "writer": content['_source']['post_writer'] if 'post_writer' in content['_source'].keys() else None,
                         "date": content['_source']['post_date'] if 'post_date' in content['_source'] else None,
+                        "originalURL": content['_source']['original_url'] if 'original_url' in content['_source'] else None,
                         "institution": content['_source']['published_institution'] if 'published_institution' in content['_source'].keys() else None,
                         "institutionURL": content['_source']['published_institution_url'] if 'published_institution_url' in content['_source'].keys() else None,
                         # "category": content['_source']['top_category'],
-                        "fileURL": content['_source']['file_download_url'] if 'file_download_url' in content['_source'].keys() else None,
+                        "fileURL": editContentByApp(content['_source']['file_download_url'],'fileURL') if 'file_download_url' in content['_source'].keys() else None,
                         "fileName": content['_source']['file_name'] if 'file_name' in content['_source'].keys() else None,
                         #content['_source']['file_download_url'],
-                        "fileContent": slicing400(content['_source']['file_extracted_content']) if 'file_extracted_content' in content['_source'].keys() else None
+                        "fileContent": editContentByApp(content['_source']['file_extracted_content'],'fileContent') if 'file_extracted_content' in content['_source'].keys() else None
                     }for content in data['hits']['hits']]
                     }
         else:
@@ -128,19 +149,23 @@ class kubic_api:
                         "rank" : self.request['rank'],
                         "contents":[{
                             "title": content['_source']['post_title'],
-                            "body": 
-                            # content['_source']['post_body'],
-                            slicing400(content['_source']['post_body']) if 'post_body' in content['_source'].keys() else None,
+                            "body": editContentByApp(content['_source']['post_body'],'body') if 'post_body' in content['_source'].keys() else None,
                             "writer": content['_source']['post_writer'] if 'post_writer' in content['_source'] else None,
                             "date": content['_source']['post_date'] if 'post_date' in content['_source'] else None,
+                            "originalURL": content['_source']['original_url'] if 'original_url' in content['_source'] else None,
                             "institution": content['_source']['published_institution'],
                             "institutionURL": content['_source']['published_institution_url'],
                             "category": content['_source']['top_category'],
-                            "fileURL": content['_source']['file_download_url'] if 'file_download_url' in content['_source'].keys() else None,
+                            "fileURL": editContentByApp(content['_source']['file_download_url'],'fileURL') if 'file_download_url' in content['_source'].keys() else None,
                             "fileName": content['_source']['file_name'] if 'file_name' in content['_source'].keys() else None,
+                            "fileContent": editContentByApp(content['_source']['file_extracted_content'],'fileContent') if 'file_extracted_content' in content['_source'].keys() else None
                             #content['_source']['file_download_url'],
                         }for content in data['hits']['hits']]
                         }
+                        
+        for item in self.response['body']['contents']:
+            for key , item2 in list(item.items()): ## list , items를 꼭 써야함.
+                if item2 is None : del item[key]
         
         raiseTraffic(_id, self.request['numOfCnt'] if self.request['numOfCnt'] < data['hits']['total']['value'] else data['hits']['total']['value'])
         return self.response

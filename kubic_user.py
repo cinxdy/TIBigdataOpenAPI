@@ -24,8 +24,12 @@ def countAPI():
     count = db.apiUser.count({"user_email": session['id']})
     return count
 
-def generateCode():
-    key = token_urlsafe(16)
+def generateCode(givenCode):
+    if givenCode==None :
+        key = token_urlsafe(16)
+    else: 
+        key = givenCode
+    
     hashKey = pbkdf2_sha512.hash(key)
     return key, hashKey
 
@@ -154,6 +158,10 @@ def raiseTraffic(_id, numOfCnt):
     db.apiUser.update({"_id": ObjectId(_id)}, {'$set':post})
     doc = getDocById(_id)
     print(doc)
+
+def getAppType(_id):
+    doc = getDocById(_id)
+    return doc['app_type']
 
 def getMyDocByEmail():
     doc = db.mydocs.find_one({"userEmail": session['id']})
