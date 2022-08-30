@@ -11,7 +11,6 @@ from kubic_email import *
 import kubic_ssl
 import logging
 from kubic_class import kubic_api
-
 from time import time
 
 app = Flask(__name__)
@@ -170,6 +169,7 @@ def api(search_name):
     # print("Date:", request.date) # None으로 뜸
     # print("Request:", request.args)
     print("Execution Time:", time() - start)
+    
     return json.dumps(kubic.response, ensure_ascii = False)
 
 
